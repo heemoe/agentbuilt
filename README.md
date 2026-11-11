@@ -1,12 +1,12 @@
-# Harnessed
+# AgentBuilt
 
 A catalog of systems software built with AI agent harnesses — compilers, kernels, operating systems, databases, emulators, browser engines, and GPU/TPU kernels — with an emphasis on verifiable evidence and open contribution.
 
 The site name, domain, and repository URL are centralized in [`site/src/site.config.ts`](site/src/site.config.ts). They are provisional:
 
-- Name: **Harnessed**
-- Repo: [https://github.com/heemoe/harnessed](https://github.com/heemoe/harnessed)
-- Default site URL: `https://heemoe.github.io/harnessed`
+- Name: **AgentBuilt**
+- Repo: [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)
+- Default site URL: `https://heemoe.github.io/agentbuilt`
 
 ## Documents
 
@@ -32,6 +32,6 @@ npm run preview     # serve the build
 npm run check:data  # validate the YAML catalog
 ```
 
-Because the configured `base` is `/harnessed`, local pages live under `http://localhost:4321/harnessed/` and `http://localhost:4321/harnessed/zh/`.
+Because the configured `base` is `/agentbuilt`, local pages live under `http://localhost:4321/agentbuilt/` and `http://localhost:4321/agentbuilt/zh/`.
 
 English is the default locale (no prefix). Simplified Chinese lives under `/zh/`.

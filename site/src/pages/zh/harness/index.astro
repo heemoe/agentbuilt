@@ -10,7 +10,7 @@ const items = allHarnesses()
   .concat(harnessOrder.filter((id) => !allHarnesses().includes(id)))
   .filter((id, i, arr) => arr.indexOf(id) === i)
   .map((id) => ({ id, count: projectsForHarness(id).length, label: labels.harness(id, locale) }));
-const title = `${t(locale, "harnessIndexTitle")} · Harnessed`;
+const title = `${t(locale, "harnessIndexTitle")} · AgentBuilt`;
 ---
 <Layout locale={locale} title={title} description={t(locale, "harnessIndexLead")} path="/harness/" current="harness">
   <section class="hero wrap">

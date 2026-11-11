@@ -13,7 +13,7 @@ const locale = "zh" as const;
 const { id } = Astro.params;
 const projects = projectsForHarness(id!);
 const name = labels.harness(id!, locale);
-const title = `${name} · Harnessed`;
+const title = `${name} · AgentBuilt`;
 const description = t(locale, "harnessIndexLead");
 ---
 <Layout locale={locale} title={title} description={description} path={`/harness/${id}/`} current="harness">

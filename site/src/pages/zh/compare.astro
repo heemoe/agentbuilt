@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { allProjects } from "../../data/catalog";
-import { labels } from "../../data/labels";
+import { isUnverifiedStatus, labels, verifiedBadgeLabel } from "../../data/labels";
 import { locText, t } from "../../i18n";
 import { localePath, withBase } from "../../site.config";
 
@@ -16,7 +16,9 @@ const payload = projects.map((p) => ({
   models: p.models.join(", "),
   categories: p.categories.map((c) => labels.category(c, locale)).join(", "),
   difficulty: labels.difficulty(p.difficulty, locale),
-  verified: labels.verified(p.verified, locale),
+  verified: isUnverifiedStatus(p.verified)
+    ? `${verifiedBadgeLabel(p.verified, locale)} — ${labels.verified(p.verified, locale)}`
+    : labels.verified(p.verified, locale),
   human: labels.human(p.human_involvement, locale),
   stars: p.stars,
   repo: p.repo_url,
@@ -33,7 +35,7 @@ const fields = [
   ["repo", t(locale, "repo")],
 ];
 ---
-<Layout locale={locale} title={`${t(locale, "compareTitle")} · Harnessed`} description={t(locale, "compareLead")} path="/compare/" current="compare">
+<Layout locale={locale} title={`${t(locale, "compareTitle")} · AgentBuilt`} description={t(locale, "compareLead")} path="/compare/" current="compare">
   <section class="hero wrap">
     <p class="kicker">{t(locale, "navCompare")}</p>
     <h1>{t(locale, "compareTitle")}</h1>

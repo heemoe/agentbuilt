@@ -1,7 +1,7 @@
 import type { en } from "./en";
 
 export const zh: Record<keyof typeof en, string> = {
-  metaDefaultTitle: "Harnessed — 用 AI Agent Harness 打造的系统级软件名录",
+  metaDefaultTitle: "AgentBuilt — 用 AI Agent Harness 打造的系统级软件名录",
   metaDefaultDescription:
     "开源收录主要由大模型 / Agent harness 产出的中高难度系统级项目：内核、编译器、数据库、模拟器、浏览器引擎、GPU/TPU kernel 等，并强调可验证证据。",
   navHome: "目录",
@@ -20,6 +20,7 @@ export const zh: Record<keyof typeof en, string> = {
   filterCategory: "类别",
   filterDifficulty: "难度",
   filterAll: "全部",
+  filterVerified: "验证状态",
   filterReset: "重置筛选",
   resultsCount: "{n} 个项目",
   noResults: "没有符合当前筛选条件的项目。",
@@ -56,7 +57,7 @@ export const zh: Record<keyof typeof en, string> = {
   footerContributing: "如何贡献",
   footerRepo: "GitHub",
   footerCopy: "这是一份开源名录。站点名、域名和仓库地址集中在 site.config.ts，方便改名。",
-  rssTitle: "Harnessed — 新收录项目",
+  rssTitle: "AgentBuilt — 新收录项目",
   rssDescription: "新列入名录的、由 LLM / Agent harness 产出的系统级软件。",
   aboutEvidence:
     "每条记录都链向第一方证据。我们不编造仓库、模型名称或基准数字。",

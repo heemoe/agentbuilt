@@ -1,14 +1,14 @@
-# Harnessed 调研与方案（初版）
+# AgentBuilt 调研与方案（初版）
 
 > 调研日期：2026-11-12（Asia/Shanghai）。所有项目、链接与指标均来自当时可公开访问的页面、仓库或论文；未编造任何条目。GitHub star 数为同日通过 GitHub API 取得的快照，会随时间变化。
 >
-> 本仓库对应的站点原型名为 **Harnessed**（暂定），代码仓库暂定 [https://github.com/heemoe/harnessed](https://github.com/heemoe/harnessed)。站点名、域名与仓库地址集中在 `site/src/site.config.ts`，便于改名。
+> 本仓库对应的站点已定名为 **AgentBuilt**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，站点 URL 暂按 GitHub Pages `https://heemoe.github.io/agentbuilt`。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
 
 ## 1. 结论（先看这里）
 
 现有「vibe coding / AI 产物」目录几乎都在收录**已上线的消费级应用、游戏和 SaaS**，按品类或工具浏览，用营收、投票或链接存活做排序。它们很少覆盖 kernel、编译器、数据库引擎、模拟器、浏览器引擎、GPU/TPU kernel 这类中高难度系统软件，也很少把 **harness 与底层模型分开建模**，开源协作（PR 提交 + schema 校验 + 证据链接）更不是主流。
 
-**Harnessed 的定位**应明确互补，而不是再做一个 MissumAI：
+**AgentBuilt 的定位**应明确互补，而不是再做一个 MissumAI：
 
 - 收录对象：主要由 LLM / Agent harness 产出的、可公开核查的系统级或高难度项目；
 - 分类轴：harness（Claude Code、Codex、Cursor、OpenCode、Gemini CLI、Antigravity、DeepSeek Harness 等）**和**底层模型，二者分开；
@@ -87,9 +87,9 @@
 | awesome-vibe-coding | [https://github.com/awesome-vibe-coding/awesome-vibe-coding](https://github.com/awesome-vibe-coding/awesome-vibe-coding) | 收的是 **工具和资源**（Bolt、Lovable、v0 等），不是「agent 写出的项目」。 |
 | awesome-ai-built-games | [https://github.com/lappemic/awesome-ai-built-games](https://github.com/lappemic/awesome-ai-built-games) | 可玩的 AI 编写游戏，按类型分组，部分标注工具与引擎。 |
 | shipped-with-ai / vibeking.fun | [https://github.com/0xvibly/awesome-vibe-coded-apps](https://github.com/0xvibly/awesome-vibe-coded-apps) | 从 vibeking.fun API 每日生成的快照，社区 upvote，体量大、字段浅。 |
-| BitsExplorer（OpenCode） | [https://bitsexplorer.com/built-with/opencode](https://bitsexplorer.com/built-with/opencode) | 用 OpenCode 写入 commit 的 `Co-Authored-By: opencode` trailer 做证据，而不是自评徽章。这对 Harnessed 的可验证性设计有参考价值。 |
+| BitsExplorer（OpenCode） | [https://bitsexplorer.com/built-with/opencode](https://bitsexplorer.com/built-with/opencode) | 用 OpenCode 写入 commit 的 `Co-Authored-By: opencode` trailer 做证据，而不是自评徽章。这对 AgentBuilt 的可验证性设计有参考价值。 |
 
-**共同缺口**：消费级产品多、系统软件少；harness 与模型不分；开源 PR 工作流少；证据分级弱。这正是 Harnessed 要补的位置。
+**共同缺口**：消费级产品多、系统软件少；harness 与模型不分；开源 PR 工作流少；证据分级弱。这正是 AgentBuilt 要补的位置。
 
 ---
 
@@ -179,7 +179,7 @@
 | 值 | 含义 |
 | --- | --- |
 | `verified` | 官方或作者第一方声明，并且有可打开的仓库或可核对的工件（代码、kernel 文件、benchmark 说明）。 |
-| `official_claim_no_source` | 官方博客/公告描述了实验，但没有公开源码。 |
+| `official_claim_no_source` | 官方博客/公告描述了实验，但没有公开源码。前台卡片与详情页统一显示「未验证 / Unverified」徽章，并可用验证状态筛选；侧栏仍展示本分级。 |
 | `author_claimed` | 作者 README/博客有明确声明，仓库可访问，但缺少官方机构背书或独立复现。 |
 | `commit_attribution` | 除作者声明外，还有 commit trailer / Co-Authored-By 等机械证据。 |
 | `paper_claimed_release_not_found` | 论文声称会发布代码，公开仓库 URL 尚未找到。 |
@@ -220,7 +220,7 @@
 
 **不优先选 Next.js 的原因**：也能做，但对当前信息架构偏重；需要额外处理 SSG/i18n/sitemap。若未来要做账户体系或复杂交互，可以再评估迁移或在同一 monorepo 加应用。
 
-部署建议：GitHub Pages（与贡献仓库一体）或 Cloudflare Pages / Vercel（预览部署对 PR 友好）。站点 URL 与 `base` 全部来自 `site.config.ts`，默认按 GitHub Pages 形态设为 `https://heemoe.github.io/harnessed`（可改自定义域并把 `base` 设为 `/`）。
+部署建议：GitHub Pages（与贡献仓库一体）或 Cloudflare Pages / Vercel（预览部署对 PR 友好）。站点 URL 与 `base` 全部来自 `site.config.ts`，默认按 GitHub Pages 形态设为 `https://heemoe.github.io/agentbuilt`（可改自定义域并把 `base` 设为 `/`）。
 
 ---
 
@@ -256,14 +256,14 @@ npm run dev      # 开发
 npm run preview  # 预览构建结果
 ```
 
-因默认 `base` 为 `/harnessed`，本地预览路径是 `http://localhost:<port>/harnessed/` 与 `http://localhost:<port>/harnessed/zh/`。
+因默认 `base` 为 `/agentbuilt`，本地预览路径是 `http://localhost:<port>/agentbuilt/` 与 `http://localhost:<port>/agentbuilt/zh/`。
 
 ---
 
 ## 10. 需要用户拍板的决策点
 
-1. **正式名称与域名**：现暂定 Harnessed，仓库 `heemoe/harnessed`，站点 URL 暂按 GitHub Pages `https://heemoe.github.io/harnessed`。若使用自定义域，需改 `site.config.ts` 里的 `origin` 与 `base`。
-2. **是否收录「官方实验但无源码」的条目**（Antigravity OS、Fable OS）。本轮已收入并单独分级；若希望目录严格「必须有仓库」，可以把它们降为「实验案例」而不是正式项目。
+1. **正式名称与域名**：**名称已定为 AgentBuilt**，仓库 `heemoe/agentbuilt`，站点 URL 暂按 GitHub Pages `https://heemoe.github.io/agentbuilt`。若使用自定义域，需改 `site.config.ts` 里的 `origin` 与 `base`。
+2. **是否收录「官方实验但无源码」的条目**（Antigravity OS、Fable OS 等）：**已决定保留收录**。列表卡片与详情页统一显示「未验证 / Unverified」徽章；首页可按验证状态筛选（已核实工件 / 作者声明 / Commit 归因 / 未验证）。详情侧栏与对比表仍保留精确分级（如 `official_claim_no_source`）。同类无公开工件的 `paper_claimed_release_not_found`（如 KernelSeek）同样使用该徽章，并归入「未验证」筛选项。
 3. **ZeroWeb、MiniSQLite 这类「第一方声明不完整」的条目如何展示**：ZeroWeb 未写 harness/模型；MiniSQLite 官方 README 不谈 agent，声明在公司社交媒体。是否要求「仓库内必须自述」才能标 `verified`。
 4. **Stars 更新策略**：构建时拉取、每日 Action 回写，还是只保留提交时的快照。
 5. **是否接受二手证据**（BitsExplorer trailer、媒体报道）作为主要依据。本轮仅把 trailer 作为 Rabbit 的补充，不单独靠媒体收项目。
@@ -291,7 +291,7 @@ npm run preview  # 预览构建结果
 
 ## 12. 下一步计划
 
-1. 按用户决定，调整站点名/域名，以及「无源码官方实验」是否保留；
+1. 若启用自定义域，改 `site.config.ts` 的 `origin` 与 `base`；「无源码官方实验」已按决定保留并加「未验证」徽章与筛选；
 2. 给 ZeroWeb 等 `unknown` 条目继续找第一方 harness/模型说明（若作者后续补充）；
 3. 周期性复查 KernelSeek 是否公开仓库；
 4. 增加 CI：schema 校验、链接检查、可选 stars 刷新；

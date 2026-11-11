@@ -1,5 +1,5 @@
 export const en = {
-  metaDefaultTitle: "Harnessed — systems software built with AI agent harnesses",
+  metaDefaultTitle: "AgentBuilt — systems software built with AI agent harnesses",
   metaDefaultDescription:
     "An open catalog of mid-to-high difficulty systems projects — kernels, compilers, databases, emulators, browser engines, and accelerator kernels — primarily produced by LLM and agent harnesses, with verifiable evidence.",
   navHome: "Catalog",
@@ -18,6 +18,7 @@ export const en = {
   filterCategory: "Category",
   filterDifficulty: "Difficulty",
   filterAll: "All",
+  filterVerified: "Verification",
   filterReset: "Reset filters",
   resultsCount: "{n} projects",
   noResults: "No projects match these filters.",
@@ -54,7 +55,7 @@ export const en = {
   footerContributing: "Contributing",
   footerRepo: "GitHub",
   footerCopy: "An open catalog. Names, domains, and the repository URL live in site.config.ts so they can be changed in one place.",
-  rssTitle: "Harnessed — new catalog entries",
+  rssTitle: "AgentBuilt — new catalog entries",
   rssDescription: "Newly listed systems software produced by LLM and agent harnesses.",
   aboutEvidence:
     "Every entry links to first-party evidence. We do not invent repositories, model names, or benchmark numbers.",

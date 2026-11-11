@@ -1,6 +1,6 @@
-# Contributing to Harnessed
+# Contributing to AgentBuilt
 
-Harnessed is a catalog of **systems software** (kernels, compilers, databases, emulators, browser engines, GPU/TPU kernels, and similar work) that was **primarily produced by an LLM or agent harness**. We care more about verifiable evidence than about hype.
+AgentBuilt is a catalog of **systems software** (kernels, compilers, databases, emulators, browser engines, GPU/TPU kernels, and similar work) that was **primarily produced by an LLM or agent harness**. We care more about verifiable evidence than about hype.
 
 English is the default language of the project. 简体中文译文欢迎补充，但不是合并的前提。
 

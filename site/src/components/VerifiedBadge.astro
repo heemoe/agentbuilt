@@ -1,0 +1,15 @@
+---
+import { isUnverifiedStatus, labels, verifiedBadgeLabel } from "../data/labels";
+import type { Locale } from "../site.config";
+
+interface Props {
+  status: string;
+  locale: Locale;
+}
+const { status, locale } = Astro.props;
+const unverified = isUnverifiedStatus(status);
+---
+<span
+  class:list={["badge", unverified ? "warn" : "copper"]}
+  title={labels.verified(status, locale)}
+>{verifiedBadgeLabel(status, locale)}</span>

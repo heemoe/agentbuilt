@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "Harnessed",
+  name: "AgentBuilt",
   origin: "https://heemoe.github.io",
-  base: "/harnessed",
-  repo: "https://github.com/heemoe/harnessed",
+  base: "/agentbuilt",
+  repo: "https://github.com/heemoe/agentbuilt",
   defaultLocale: "en" as const,
   locales: [
     { id: "en" as const, htmlLang: "en", ogLocale: "en_US", hreflang: "en", label: "English" },

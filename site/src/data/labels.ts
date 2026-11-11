@@ -39,7 +39,7 @@ const verified: Record<string, { en: string; zh: string }> = {
   author_claimed: { en: "Author claimed", zh: "作者声明" },
   commit_attribution: { en: "Commit attribution", zh: "Commit 归因" },
   paper_claimed_release_not_found: { en: "Paper release not found", zh: "论文声称发布但未找到仓库" },
-  unverified: { en: "Unverified", zh: "未核实" },
+  unverified: { en: "Unverified", zh: "未验证" },
 };
 
 const human: Record<string, { en: string; zh: string }> = {
@@ -66,6 +66,29 @@ const evidenceType: Record<string, { en: string; zh: string }> = {
   benchmark: { en: "Benchmark / dashboard", zh: "基准 / 看板" },
   official_social: { en: "Official social post", zh: "官方社交帖" },
 };
+
+
+export const unverifiedStatuses = [
+  "official_claim_no_source",
+  "paper_claimed_release_not_found",
+  "unverified",
+] as const;
+
+export function isUnverifiedStatus(id: string): boolean {
+  return (unverifiedStatuses as readonly string[]).includes(id);
+}
+
+export function verifiedBadgeLabel(id: string, locale: Locale): string {
+  if (isUnverifiedStatus(id)) return locale === "zh" ? "未验证" : "Unverified";
+  return pick(verified, id, locale);
+}
+
+export const verifiedFilterValues = [
+  "verified",
+  "author_claimed",
+  "commit_attribution",
+  "unverified",
+] as const;
 
 export const harnessOrder = [
   "claude-code",

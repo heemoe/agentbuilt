@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { allProjects } from "../../data/catalog";
-import { labels } from "../../data/labels";
+import { isUnverifiedStatus, labels, verifiedBadgeLabel } from "../../data/labels";
+import VerifiedBadge from "../../components/VerifiedBadge.astro";
 import { locText, t } from "../../i18n";
 import { absoluteUrl, localePath, siteConfig } from "../../site.config";
 
@@ -33,7 +34,7 @@ const jsonLd = [
       <div class="badges">
         {project.categories.map((c) => <span class="badge teal">{labels.category(c, locale)}</span>)}
         <span class="badge">{labels.difficulty(project.difficulty, locale)}</span>
-        <span class="badge copper">{labels.verified(project.verified, locale)}</span>
+        <VerifiedBadge status={project.verified} locale={locale} />
       </div>
       <h1>{project.name}</h1>
       <p class="lead">{locText(locale, project.summary)}</p>
@@ -91,6 +92,12 @@ const jsonLd = [
           <dd>{project.languages?.join(", ") || "—"}</dd>
           <dt>{t(locale, "status")}</dt>
           <dd>{labels.status(project.status, locale)}</dd>
+          <dt>{t(locale, "verified")}</dt>
+          <dd>
+            {isUnverifiedStatus(project.verified)
+              ? `${verifiedBadgeLabel(project.verified, locale)} — ${labels.verified(project.verified, locale)}`
+              : labels.verified(project.verified, locale)}
+          </dd>
           {project.listed_at && (
             <>
               <dt>{t(locale, "listedAt")}</dt>
