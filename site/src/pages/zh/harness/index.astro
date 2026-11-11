@@ -1,0 +1,29 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { allHarnesses, projectsForHarness } from "../../../data/catalog";
+import { labels, harnessOrder } from "../../../data/labels";
+import { t } from "../../../i18n";
+import { localePath, withBase } from "../../../site.config";
+
+const locale = "zh" as const;
+const items = allHarnesses()
+  .concat(harnessOrder.filter((id) => !allHarnesses().includes(id)))
+  .filter((id, i, arr) => arr.indexOf(id) === i)
+  .map((id) => ({ id, count: projectsForHarness(id).length, label: labels.harness(id, locale) }));
+const title = `${t(locale, "harnessIndexTitle")} · Harnessed`;
+---
+<Layout locale={locale} title={title} description={t(locale, "harnessIndexLead")} path="/harness/" current="harness">
+  <section class="hero wrap">
+    <p class="kicker">{t(locale, "navHarnesses")}</p>
+    <h1>{t(locale, "harnessIndexTitle")}</h1>
+    <p class="lead">{t(locale, "harnessIndexLead")}</p>
+  </section>
+  <div class="wrap harness-list">
+    {items.map((item) => (
+      <a class="harness-row" href={withBase(localePath(locale, `/harness/${item.id}/`))}>
+        <strong>{item.label}</strong>
+        <span class="mono">{item.count}</span>
+      </a>
+    ))}
+  </div>
+</Layout>

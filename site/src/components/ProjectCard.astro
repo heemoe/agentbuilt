@@ -1,0 +1,28 @@
+---
+import type { Project } from "../data/types";
+import { labels } from "../data/labels";
+import { locText } from "../i18n";
+import { localePath, withBase, type Locale } from "../site.config";
+
+interface Props { project: Project; locale: Locale; }
+const { project, locale } = Astro.props;
+---
+<a
+  class="card"
+  href={withBase(localePath(locale, `/project/${project.id}/`))}
+  data-harnesses={project.harnesses.join(",")}
+  data-models={project.models.join(",")}
+  data-categories={project.categories.join(",")}
+  data-difficulty={project.difficulty}
+>
+  <div class="badges">
+    {project.categories.map((c) => <span class="badge teal">{labels.category(c, locale)}</span>)}
+    <span class="badge">{labels.difficulty(project.difficulty, locale)}</span>
+  </div>
+  <h2>{project.name}</h2>
+  <p>{locText(locale, project.summary)}</p>
+  <div class="meta-row">
+    {project.harnesses.map((h) => <span class="badge copper">{labels.harness(h, locale)}</span>)}
+    {project.stars != null && <span class="stars">★ {project.stars.toLocaleString()}</span>}
+  </div>
+</a>

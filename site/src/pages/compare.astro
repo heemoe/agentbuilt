@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { allProjects } from "../data/catalog";
+import { labels } from "../data/labels";
+import { locText, t } from "../i18n";
+import { localePath, withBase } from "../site.config";
+
+const locale = "en" as const;
+const projects = allProjects();
+const payload = projects.map((p) => ({
+  id: p.id,
+  name: p.name,
+  summary: locText(locale, p.summary),
+  href: withBase(localePath(locale, `/project/${p.id}/`)),
+  harnesses: p.harnesses.map((h) => labels.harness(h, locale)).join(", "),
+  models: p.models.join(", "),
+  categories: p.categories.map((c) => labels.category(c, locale)).join(", "),
+  difficulty: labels.difficulty(p.difficulty, locale),
+  verified: labels.verified(p.verified, locale),
+  human: labels.human(p.human_involvement, locale),
+  stars: p.stars,
+  repo: p.repo_url,
+}));
+const fields = [
+  ["summary", locale === "zh" ? "摘要" : "Summary"],
+  ["harnesses", "Harness"],
+  ["models", t(locale, "filterModel")],
+  ["categories", t(locale, "filterCategory")],
+  ["difficulty", t(locale, "filterDifficulty")],
+  ["verified", t(locale, "verified")],
+  ["human", t(locale, "humanInvolvement")],
+  ["stars", t(locale, "stars")],
+  ["repo", t(locale, "repo")],
+];
+---
+<Layout locale={locale} title={`${t(locale, "compareTitle")} · Harnessed`} description={t(locale, "compareLead")} path="/compare/" current="compare">
+  <section class="hero wrap">
+    <p class="kicker">{t(locale, "navCompare")}</p>
+    <h1>{t(locale, "compareTitle")}</h1>
+    <p class="lead">{t(locale, "compareLead")}</p>
+  </section>
+  <section class="wrap">
+    <form id="compare-form">
+      <p>{t(locale, "compareSelect")}</p>
+      <div class="compare-pick">
+        {projects.map((project) => (
+          <label>
+            <input type="checkbox" name="ids" value={project.id} />
+            <span>{project.name}</span>
+          </label>
+        ))}
+      </div>
+      <button class="btn" type="submit">{t(locale, "compareAction")}</button>
+    </form>
+    <p class="note" id="compare-hint">{t(locale, "compareNeedTwo")}</p>
+    <div id="compare-root"></div>
+    <script type="application/json" id="compare-data" set:html={JSON.stringify({ payload, fields, hint: t(locale, "compareNeedTwo"), col: t(locale, "compareCol") })} />
+  </section>
+</Layout>
+<script is:inline>
+  (function () {
+    const form = document.getElementById("compare-form");
+    const root = document.getElementById("compare-root");
+    const hint = document.getElementById("compare-hint");
+    const raw = document.getElementById("compare-data");
+    if (!form || !root || !raw) return;
+    const { payload, fields, hint: hintText, col } = JSON.parse(raw.textContent || "{}");
+    const byId = Object.fromEntries(payload.map((p) => [p.id, p]));
+
+    function selected() {
+      return Array.from(form.querySelectorAll('input[name="ids"]:checked')).map((el) => el.value).slice(0, 3);
+    }
+
+    function render() {
+      const ids = selected();
+      form.querySelectorAll('input[name="ids"]').forEach((el) => {
+        el.disabled = !el.checked && ids.length >= 3;
+      });
+      const params = new URLSearchParams();
+      if (ids.length) params.set("ids", ids.join(","));
+      history.replaceState(null, "", params.toString() ? `${location.pathname}?${params}` : location.pathname);
+      if (ids.length < 2) {
+        root.innerHTML = "";
+        if (hint) { hint.hidden = false; hint.textContent = hintText; }
+        return;
+      }
+      if (hint) hint.hidden = true;
+      const cols = ids.map((id) => byId[id]).filter(Boolean);
+      const head = `<tr><th>${col}</th>${cols.map((c) => `<th><a href="${c.href}">${c.name}</a></th>`).join("")}</tr>`;
+      const body = fields.map(([key, label]) => {
+        const cells = cols.map((c) => {
+          let v = c[key];
+          if (key === "repo") v = v ? `<a href="${v}">${v}</a>` : "—";
+          else if (key === "stars") v = v == null ? "—" : String(v);
+          else if (key === "summary") v = c.summary;
+          return `<td>${v ?? "—"}</td>`;
+        }).join("");
+        return `<tr><th>${label}</th>${cells}</tr>`;
+      }).join("");
+      root.innerHTML = `<table class="compare-table"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+    }
+
+    const initial = new URLSearchParams(location.search).get("ids");
+    if (initial) {
+      initial.split(",").forEach((id) => {
+        const el = form.querySelector(`input[value="${CSS.escape(id)}"]`);
+        if (el) el.checked = true;
+      });
+    }
+    form.addEventListener("change", render);
+    form.addEventListener("submit", (e) => { e.preventDefault(); render(); });
+    render();
+  })();
+</script>

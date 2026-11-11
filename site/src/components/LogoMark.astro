@@ -1,0 +1,21 @@
+---
+interface Props { size?: number; }
+const { size = 28 } = Astro.props;
+---
+<svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <rect width="64" height="64" rx="14" fill="#12161b" stroke="rgba(239,236,228,0.16)"/>
+  <path d="M7 18C22 18 22 29 33 29" stroke="#6eb3ae" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M7 32C21 32 24 32 33 32" stroke="#d4893a" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M7 46C22 46 22 35 33 35" stroke="#6eb3ae" stroke-width="2.2" stroke-linecap="round"/>
+  <rect x="31.5" y="21" width="5" height="22" rx="1.2" fill="#efece4"/>
+  <rect x="42.5" y="21" width="5" height="22" rx="1.2" fill="#efece4"/>
+  <rect x="31.5" y="30" width="16" height="4" rx="1" fill="#d4893a"/>
+  <g fill="none" stroke="#efece4" stroke-width="1.15">
+    <rect x="50" y="23.5" width="5" height="5" rx="0.7"/>
+    <rect x="56.2" y="23.5" width="5" height="5" rx="0.7"/>
+    <rect x="50" y="29.75" width="5" height="5" rx="0.7"/>
+    <rect x="56.2" y="29.75" width="5" height="5" rx="0.7"/>
+    <rect x="50" y="36" width="5" height="5" rx="0.7"/>
+    <rect x="56.2" y="36" width="5" height="5" rx="0.7"/>
+  </g>
+</svg>
