@@ -2,11 +2,11 @@
 
 A catalog of systems software built with AI agent harnesses — compilers, kernels, operating systems, databases, emulators, browser engines, and GPU/TPU kernels — with an emphasis on verifiable evidence and open contribution.
 
-The site name, domain, and repository URL are centralized in [`site/src/site.config.ts`](site/src/site.config.ts). They are provisional:
+The site name, domain, and repository URL are centralized in [`site/src/site.config.ts`](site/src/site.config.ts):
 
 - Name: **AgentBuilt**
 - Repo: [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)
-- Default site URL: `https://heemoe.github.io/agentbuilt`
+- Site URL: [https://agentbuilt.pages.dev](https://agentbuilt.pages.dev) (Cloudflare Pages, no custom domain)
 
 ## Documents
 
@@ -32,6 +32,22 @@ npm run preview     # serve the build
 npm run check:data  # validate the YAML catalog
 ```
 
-Because the configured `base` is `/agentbuilt`, local pages live under `http://localhost:4321/agentbuilt/` and `http://localhost:4321/agentbuilt/zh/`.
+The site is served from the root path. English is the default locale (no prefix). Simplified Chinese lives under `/zh/`. Local preview: `http://localhost:4321/` and `http://localhost:4321/zh/`.
 
-English is the default locale (no prefix). Simplified Chinese lives under `/zh/`.
+## Deploy (Cloudflare Pages)
+
+Configuration lives in [`site/wrangler.toml`](site/wrangler.toml) (`name = "agentbuilt"`, `pages_build_output_dir = "dist"`).
+
+If you connect the Git repository in the Cloudflare dashboard, use:
+
+- **Root directory:** `site`
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+
+To publish a local production build:
+
+```bash
+cd site
+npm run build
+npx wrangler pages deploy dist --project-name=agentbuilt
+```

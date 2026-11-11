@@ -2,7 +2,7 @@
 
 > 调研日期：2026-11-12（Asia/Shanghai）。所有项目、链接与指标均来自当时可公开访问的页面、仓库或论文；未编造任何条目。GitHub star 数为同日通过 GitHub API 取得的快照，会随时间变化。
 >
-> 本仓库对应的站点已定名为 **AgentBuilt**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，站点 URL 暂按 GitHub Pages `https://heemoe.github.io/agentbuilt`。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
+> 本仓库对应的站点已定名为 **AgentBuilt**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，部署在 Cloudflare Pages，站点 URL 为 `https://agentbuilt.pages.dev`（不用自定义域，`base` 为根路径 `/`）。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
 
 ## 1. 结论（先看这里）
 
@@ -15,7 +15,7 @@
 - 核心资产：可验证性（作者声明、官方博客、论文、commit trailer、benchmark），而不是营收榜；
 - 协作方式：开源仓库 + YAML/JSON 数据 + PR 模板 + CI 校验 schema。
 
-技术选型建议用 **Astro 静态站 + YAML 数据源**，部署到 GitHub Pages、Cloudflare Pages 或 Vercel。理由见第 7 节：目录站以内容与筛选为主，静态生成足够快、够便宜、也方便 PR 预览。
+技术选型建议用 **Astro 静态站 + YAML 数据源**，部署到 Cloudflare Pages。理由见第 7 节：目录站以内容与筛选为主，静态生成足够快、够便宜、也方便后续接 PR 预览。
 
 本轮共整理 **17 条**可公开核查的种子项目（见 `seed-projects.yaml`），另将 **Qwenputer** 明确排除（它不是「用 agent 写出来的软件」，而是把 RISC-V CPU 编译进模型权重的研究）。**未找到**可验证的、由 DeepSeek Harness 或 Gemini CLI **作为主要产出工具**完成的系统级项目；Google 侧的系统级演示目前能核实的是 **Antigravity + Gemini 3.5 Flash** 的 OS 实验，但没有公开源码仓库。
 
@@ -208,7 +208,7 @@
 
 ## 7. 技术选型
 
-**推荐 Astro（静态输出）+ YAML + GitHub Pages / Cloudflare Pages / Vercel。**
+**推荐并已采用 Astro（静态输出）+ YAML + Cloudflare Pages。**
 
 理由：
 
@@ -220,7 +220,7 @@
 
 **不优先选 Next.js 的原因**：也能做，但对当前信息架构偏重；需要额外处理 SSG/i18n/sitemap。若未来要做账户体系或复杂交互，可以再评估迁移或在同一 monorepo 加应用。
 
-部署建议：GitHub Pages（与贡献仓库一体）或 Cloudflare Pages / Vercel（预览部署对 PR 友好）。站点 URL 与 `base` 全部来自 `site.config.ts`，默认按 GitHub Pages 形态设为 `https://heemoe.github.io/agentbuilt`（可改自定义域并把 `base` 设为 `/`）。
+部署已定为 **Cloudflare Pages**，不用自定义域。站点 URL 为 `https://agentbuilt.pages.dev`，`base` 为 `/`。构建设置：根目录 `site`，命令 `npm run build`，输出 `dist`；详见 `site/wrangler.toml` 与 README。
 
 ---
 
@@ -256,19 +256,19 @@ npm run dev      # 开发
 npm run preview  # 预览构建结果
 ```
 
-因默认 `base` 为 `/agentbuilt`，本地预览路径是 `http://localhost:<port>/agentbuilt/` 与 `http://localhost:<port>/agentbuilt/zh/`。
+因 `base` 为根路径 `/`，本地预览路径是 `http://localhost:<port>/` 与 `http://localhost:<port>/zh/`。
 
 ---
 
 ## 10. 需要用户拍板的决策点
 
-1. **正式名称与域名**：**名称已定为 AgentBuilt**，仓库 `heemoe/agentbuilt`，站点 URL 暂按 GitHub Pages `https://heemoe.github.io/agentbuilt`。若使用自定义域，需改 `site.config.ts` 里的 `origin` 与 `base`。
+1. **正式名称与域名**：**名称已定为 AgentBuilt**，仓库 `heemoe/agentbuilt`。**部署已定为 Cloudflare Pages，不用自定义域**，站点 URL 为 `https://agentbuilt.pages.dev`，`base` 为 `/`。
 2. **是否收录「官方实验但无源码」的条目**（Antigravity OS、Fable OS 等）：**已决定保留收录**。列表卡片与详情页统一显示「未验证 / Unverified」徽章；首页可按验证状态筛选（已核实工件 / 作者声明 / Commit 归因 / 未验证）。详情侧栏与对比表仍保留精确分级（如 `official_claim_no_source`）。同类无公开工件的 `paper_claimed_release_not_found`（如 KernelSeek）同样使用该徽章，并归入「未验证」筛选项。
 3. **ZeroWeb、MiniSQLite 这类「第一方声明不完整」的条目如何展示**：ZeroWeb 未写 harness/模型；MiniSQLite 官方 README 不谈 agent，声明在公司社交媒体。是否要求「仓库内必须自述」才能标 `verified`。
 4. **Stars 更新策略**：构建时拉取、每日 Action 回写，还是只保留提交时的快照。
 5. **是否接受二手证据**（BitsExplorer trailer、媒体报道）作为主要依据。本轮仅把 trailer 作为 Rabbit 的补充，不单独靠媒体收项目。
 6. **语言范围**：现在只有 en + zh。是否需要繁体或其他语言，只是加字典，但要有人维护译文。
-7. **部署目标**：GitHub Pages、Cloudflare Pages 还是 Vercel（影响 CI 与预览 URL）。
+7. **部署目标**：**已定为 Cloudflare Pages**（`https://agentbuilt.pages.dev`），不用自定义域。
 
 ---
 
@@ -291,7 +291,7 @@ npm run preview  # 预览构建结果
 
 ## 12. 下一步计划
 
-1. 若启用自定义域，改 `site.config.ts` 的 `origin` 与 `base`；「无源码官方实验」已按决定保留并加「未验证」徽章与筛选；
+1. 部署与无源码条目展示均已按决定落地（Cloudflare Pages +「未验证」徽章与筛选）；
 2. 给 ZeroWeb 等 `unknown` 条目继续找第一方 harness/模型说明（若作者后续补充）；
 3. 周期性复查 KernelSeek 是否公开仓库；
 4. 增加 CI：schema 校验、链接检查、可选 stars 刷新；

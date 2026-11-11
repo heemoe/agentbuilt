@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://heemoe.github.io/agentbuilt/schema/project.schema.json",
+  "$id": "https://agentbuilt.pages.dev/schema/project.schema.json",
   "title": "AgentBuilt catalog file",
   "description": "A YAML/JSON catalog of systems software projects primarily produced by LLM/agent harnesses.",
   "type": "object",

@@ -1,0 +1,7 @@
+# Cloudflare Pages project for AgentBuilt.
+# Dashboard / CI build settings if connecting Git later:
+#   Root directory: site
+#   Build command: npm run build
+#   Build output directory: dist
+name = "agentbuilt"
+pages_build_output_dir = "dist"

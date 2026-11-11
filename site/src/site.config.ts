@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "AgentBuilt",
-  origin: "https://heemoe.github.io",
-  base: "/agentbuilt",
+  origin: "https://agentbuilt.pages.dev",
+  base: "/",
   repo: "https://github.com/heemoe/agentbuilt",
   defaultLocale: "en" as const,
   locales: [
