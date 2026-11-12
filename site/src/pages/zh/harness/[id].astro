@@ -1,0 +1,34 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ProjectCard from "../../../components/ProjectCard.astro";
+import { allHarnesses, projectsForHarness } from "../../../data/catalog";
+import { labels } from "../../../data/labels";
+import { t } from "../../../i18n";
+
+export function getStaticPaths() {
+  return allHarnesses().concat(["gemini-cli", "deepseek-harness"]).filter((id, i, a) => a.indexOf(id) === i).map((id) => ({ params: { id } }));
+}
+
+const locale = "zh" as const;
+const { id } = Astro.params;
+const projects = projectsForHarness(id!);
+const name = labels.harness(id!, locale);
+const title = `${name} · AgentBuilt`;
+const description = t(locale, "harnessIndexLead");
+---
+<Layout locale={locale} title={title} description={description} path={`/harness/${id}/`} current="harness">
+  <section class="hero wrap">
+    <p class="kicker">{t(locale, "navHarnesses")}</p>
+    <h1>{name}</h1>
+    <p class="lead">{t(locale, "resultsCount", { n: projects.length })}</p>
+  </section>
+  <section class="wrap">
+    {projects.length ? (
+      <div class="grid">
+        {projects.map((project) => <ProjectCard project={project} locale={locale} />)}
+      </div>
+    ) : (
+      <p class="empty">{t(locale, "harnessEmpty")}</p>
+    )}
+  </section>
+</Layout>

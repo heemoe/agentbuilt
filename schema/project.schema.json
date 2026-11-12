@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentbuilt.pages.dev/schema/project.schema.json",
+  "title": "AgentBuilt catalog file",
+  "description": "A YAML/JSON catalog of systems software projects primarily produced by LLM/agent harnesses.",
+  "type": "object",
+  "required": ["catalog_version", "stars_checked_at", "projects"],
+  "additionalProperties": false,
+  "properties": {
+    "catalog_version": { "type": "integer", "minimum": 1 },
+    "stars_checked_at": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "projects": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/project" }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": ["en"],
+      "additionalProperties": false,
+      "properties": {
+        "en": { "type": "string", "minLength": 1 },
+        "zh": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["type", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "official_blog",
+            "official_repo",
+            "author_readme",
+            "author_blog",
+            "paper",
+            "commit_trailer",
+            "benchmark",
+            "official_social"
+          ]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "quote": { "type": "string" },
+        "accessed": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+      }
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "id", "name", "summary", "harnesses", "models", "categories",
+        "difficulty", "evidence", "human_involvement", "verified", "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "summary": { "$ref": "#/$defs/localized" },
+        "description": { "$ref": "#/$defs/localized" },
+        "repo_url": { "type": ["string", "null"], "format": "uri" },
+        "homepage_url": { "type": ["string", "null"], "format": "uri" },
+        "article_urls": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" }
+        },
+        "harnesses": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "claude-code", "codex", "cursor", "opencode", "gemini-cli",
+              "antigravity", "deepseek-harness", "loom", "custom", "unknown"
+            ]
+          }
+        },
+        "models": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9.]+)*$" }
+        },
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "compiler", "kernel", "os", "database", "emulator",
+              "browser-engine", "js-engine", "gpu-kernel", "tpu-kernel",
+              "migration", "other"
+            ]
+          }
+        },
+        "difficulty": { "type": "string", "enum": ["medium", "high", "very-high"] },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evidence" }
+        },
+        "human_involvement": {
+          "type": "string",
+          "enum": ["autonomous_multi_agent", "steered_agent", "pair", "unknown"]
+        },
+        "human_involvement_notes": { "$ref": "#/$defs/localized" },
+        "verified": {
+          "type": "string",
+          "enum": [
+            "verified",
+            "official_claim_no_source",
+            "author_claimed",
+            "commit_attribution",
+            "paper_claimed_release_not_found",
+            "unverified"
+          ]
+        },
+        "stars": { "type": ["integer", "null"], "minimum": 0 },
+        "stars_checked_at": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "license": { "type": ["string", "null"] },
+        "languages": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "research", "no_public_source", "preserved_branch"]
+        },
+        "listed_at": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "first_public_at": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "notes": { "$ref": "#/$defs/localized" }
+      }
+    }
+  }
+}

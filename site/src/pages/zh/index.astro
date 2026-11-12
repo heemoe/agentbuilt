@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FilterableGrid from "../../components/FilterableGrid.astro";
+import { allProjects, allHarnesses, allModels, allCategories } from "../../data/catalog";
+import { siteConfig, absoluteUrl, localePath } from "../../site.config";
+import { t } from "../../i18n";
+
+const locale = "zh" as const;
+const projects = allProjects();
+const title = t(locale, "metaDefaultTitle");
+const description = t(locale, "metaDefaultDescription");
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: absoluteUrl(localePath(locale, "/")),
+    description,
+    inLanguage: ["en", "zh-CN"],
+  },
+];
+---
+<Layout locale={locale} title={title} description={description} path="/" jsonLd={jsonLd} current="home">
+  <section class="hero wrap">
+    <p class="kicker">{t(locale, "heroKicker")}</p>
+    <h1>{t(locale, "heroTitle")}</h1>
+    <p class="lead">{t(locale, "heroLead")}</p>
+    <p class="note">{t(locale, "heroNote")}</p>
+    <p class="note">{t(locale, "aboutEvidence")}</p>
+  </section>
+  <FilterableGrid
+    locale={locale}
+    projects={projects}
+    harnesses={allHarnesses()}
+    models={allModels()}
+    categories={allCategories()}
+  />
+</Layout>

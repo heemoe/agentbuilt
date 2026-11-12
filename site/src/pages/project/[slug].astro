@@ -1,0 +1,127 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { allProjects } from "../../data/catalog";
+import { isUnverifiedStatus, labels, verifiedBadgeLabel } from "../../data/labels";
+import VerifiedBadge from "../../components/VerifiedBadge.astro";
+import { locText, t } from "../../i18n";
+import { absoluteUrl, localePath, siteConfig } from "../../site.config";
+
+export function getStaticPaths() {
+  return allProjects().map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const locale = "en" as const;
+const { project } = Astro.props;
+const title = `${project.name} · ${siteConfig.name}`;
+const description = locText(locale, project.summary);
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    name: project.name,
+    description,
+    url: absoluteUrl(localePath(locale, `/project/${project.id}/`)),
+    codeRepository: project.repo_url ?? undefined,
+    programmingLanguage: project.languages?.join(", ") || undefined,
+    license: project.license ?? undefined,
+    inLanguage: locale === "zh" ? "zh-CN" : "en",
+  },
+];
+---
+<Layout locale={locale} title={title} description={description} path={`/project/${project.id}/`} jsonLd={jsonLd}>
+  <article class="detail wrap">
+    <header class="detail-header">
+      <div class="badges">
+        {project.categories.map((c) => <span class="badge teal">{labels.category(c, locale)}</span>)}
+        <span class="badge">{labels.difficulty(project.difficulty, locale)}</span>
+        <VerifiedBadge status={project.verified} locale={locale} />
+      </div>
+      <h1>{project.name}</h1>
+      <p class="lead">{locText(locale, project.summary)}</p>
+    </header>
+    <div class="detail-grid">
+      <div class="prose">
+        {project.description && <p>{locText(locale, project.description)}</p>}
+        {project.human_involvement_notes && (
+          <section>
+            <h2>{t(locale, "humanInvolvement")}</h2>
+            <p>{labels.human(project.human_involvement, locale)}. {locText(locale, project.human_involvement_notes)}</p>
+          </section>
+        )}
+        <section>
+          <h2>{t(locale, "evidence")}</h2>
+          <ul class="evidence-list">
+            {project.evidence.map((item) => (
+              <li>
+                <a href={item.url}>{labels.evidenceType(item.type, locale)}</a>
+                {item.quote && <blockquote>{item.quote}</blockquote>}
+              </li>
+            ))}
+          </ul>
+        </section>
+        {project.notes && (
+          <section>
+            <h2>{t(locale, "notes")}</h2>
+            <p>{locText(locale, project.notes)}</p>
+          </section>
+        )}
+      </div>
+      <aside class="side">
+        <dl>
+          <dt>{t(locale, "repo")}</dt>
+          <dd>
+            {project.repo_url ? <a href={project.repo_url}>{t(locale, "openRepo")}</a> : t(locale, "missingRepo")}
+          </dd>
+          {project.homepage_url && (
+            <>
+              <dt>{t(locale, "homepage")}</dt>
+              <dd><a href={project.homepage_url}>{project.homepage_url}</a></dd>
+            </>
+          )}
+          <dt>Harness</dt>
+          <dd>{project.harnesses.map((h) => labels.harness(h, locale)).join(" · ")}</dd>
+          <dt>{t(locale, "filterModel")}</dt>
+          <dd>{project.models.map((m) => (m === "unknown" ? t(locale, "modelUnknown") : m)).join(" · ")}</dd>
+          <dt>{t(locale, "stars")}</dt>
+          <dd>{project.stars != null ? `★ ${project.stars.toLocaleString()}` : "—"}
+            {project.stars_checked_at && <div class="note">{t(locale, "starsSnapshot")} ({project.stars_checked_at})</div>}
+          </dd>
+          <dt>{t(locale, "license")}</dt>
+          <dd>{project.license ?? "—"}</dd>
+          <dt>{t(locale, "languages")}</dt>
+          <dd>{project.languages?.join(", ") || "—"}</dd>
+          <dt>{t(locale, "status")}</dt>
+          <dd>{labels.status(project.status, locale)}</dd>
+          <dt>{t(locale, "verified")}</dt>
+          <dd>
+            {isUnverifiedStatus(project.verified)
+              ? `${verifiedBadgeLabel(project.verified, locale)} — ${labels.verified(project.verified, locale)}`
+              : labels.verified(project.verified, locale)}
+          </dd>
+          {project.listed_at && (
+            <>
+              <dt>{t(locale, "listedAt")}</dt>
+              <dd>{project.listed_at}</dd>
+            </>
+          )}
+          {project.first_public_at && (
+            <>
+              <dt>{t(locale, "firstPublicAt")}</dt>
+              <dd>{project.first_public_at}</dd>
+            </>
+          )}
+          {project.article_urls && project.article_urls.length > 0 && (
+            <>
+              <dt>{t(locale, "articles")}</dt>
+              <dd>
+                {project.article_urls.map((url) => (
+                  <div><a href={url}>{url.replace(/^https?:\/\//, "")}</a></div>
+                ))}
+              </dd>
+            </>
+          )}
+        </dl>
+      </aside>
+    </div>
+  </article>
+</Layout>
