@@ -1,7 +1,7 @@
 import type { en } from "./en";
 
 export const zh: Record<keyof typeof en, string> = {
-  metaDefaultTitle: "AgentBuilt：agent harness 写出来的系统软件",
+  metaDefaultTitle: "What AI Built · agent harness 写出来的系统软件",
   metaDefaultDescription:
     "收录 Claude Code、Codex、Cursor 等 AI agent harness 写出来的内核、编译器、操作系统和数据库。只有博客、没有公开代码的，标成未验证。",
   navHome: "目录",
@@ -57,7 +57,7 @@ export const zh: Record<keyof typeof en, string> = {
   footerContributing: "贡献说明",
   footerRepo: "GitHub",
   footerCopy: "站点名、域名和仓库地址都在 site.config.ts 里。",
-  rssTitle: "AgentBuilt：新收录的项目",
+  rssTitle: "What AI Built · 新收录的项目",
   rssDescription: "刚加进目录的系统项目。",
   aboutEvidence:
     "来源和代码都打得开，才算已验证。只有博客或论文、找不到公开仓库的，列表里还留着，但标成未验证。仓库链接、模型名和测试数字都照来源抄，不另外补。要加条目或改错，提一个 PR。",

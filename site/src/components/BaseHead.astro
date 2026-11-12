@@ -52,6 +52,9 @@ const localeMeta = siteConfig.locales.find((l) => l.id === locale)!;
 <link rel="icon" href={absoluteUrl("/favicon.svg")} type="image/svg+xml" />
 <link rel="icon" href={absoluteUrl("/favicon-32.png")} type="image/png" sizes="32x32" />
 <link rel="apple-touch-icon" href={absoluteUrl("/apple-touch-icon.png")} />
+<link rel="manifest" href={absoluteUrl("/site.webmanifest")} />
+<meta name="application-name" content={siteConfig.name} />
+<meta name="apple-mobile-web-app-title" content={siteConfig.name} />
 <link rel="sitemap" href={absoluteUrl("/sitemap-index.xml")} />
 {jsonLd.map((block) => (
   <script type="application/ld+json" set:html={JSON.stringify(block)} />

@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "AgentBuilt",
+  name: "What AI Built",
   origin: "https://whataibuilt.com",
   base: "/",
   repo: "https://github.com/heemoe/agentbuilt",

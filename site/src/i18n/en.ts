@@ -1,5 +1,5 @@
 export const en = {
-  metaDefaultTitle: "AgentBuilt: systems software written with AI agent harnesses",
+  metaDefaultTitle: "What AI Built · systems software written with agent harnesses",
   metaDefaultDescription:
     "Kernels, compilers, operating systems, and databases written with AI agent harnesses (Claude Code, Codex, Cursor). Blog-only projects are marked unverified.",
   navHome: "Catalog",
@@ -57,7 +57,7 @@ export const en = {
   footerContributing: "Contributing",
   footerRepo: "GitHub",
   footerCopy: "Site name, domain, and repository URL are in site.config.ts.",
-  rssTitle: "AgentBuilt: new entries",
+  rssTitle: "What AI Built · new entries",
   rssDescription: "Systems projects just added to the catalog.",
   aboutEvidence:
     "Verified means we can open a first-party source and the code. A blog post or paper with no public repository stays in the list and is marked unverified. Repo URLs, model names, and benchmark numbers are copied from the source. Add or fix an entry with a pull request.",

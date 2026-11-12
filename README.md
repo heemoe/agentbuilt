@@ -1,4 +1,4 @@
-# AgentBuilt
+# What AI Built
 
 A catalog of systems software written mostly by AI coding agents and agent harnesses: kernels, compilers, operating systems, databases, emulators, browser engines, GPU kernels, and TPU kernels.
 
@@ -6,7 +6,7 @@ Each entry links to a first-party source (author README, official post, paper, o
 
 The site name, domain, and repository URL are in [`site/src/site.config.ts`](site/src/site.config.ts):
 
-- Name: **AgentBuilt**
+- Name: **What AI Built**
 - Repo: [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)
 - Site URL: [https://whataibuilt.com](https://whataibuilt.com) (Cloudflare Pages custom domain)
 

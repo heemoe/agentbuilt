@@ -1,15 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#12161b" stroke="rgba(239,236,228,0.16)"/>
-  <path d="M32 13 L16.5 50" stroke="#efece4" stroke-width="7" stroke-linecap="round"/>
-  <path d="M32 13 L47.5 50" stroke="#efece4" stroke-width="7" stroke-linecap="round"/>
-  <rect x="19.5" y="33" width="25" height="12" rx="2.1" fill="#d4893a"/>
-  <rect x="21.5" y="34.9" width="21" height="8.2" rx="1.2" fill="#12161b"/>
-  <g fill="#6eb3ae">
-    <rect x="23.1" y="36.2" width="5" height="2.5" rx="0.4"/>
-    <rect x="29.5" y="36.2" width="5" height="2.5" rx="0.4"/>
-    <rect x="35.9" y="36.2" width="5" height="2.5" rx="0.4"/>
-    <rect x="23.1" y="39.6" width="5" height="2.5" rx="0.4"/>
-    <rect x="29.5" y="39.6" width="5" height="2.5" rx="0.4"/>
-    <rect x="35.9" y="39.6" width="5" height="2.5" rx="0.4"/>
-  </g>
+  <rect width="64" height="64" rx="14" fill="#d4893a"/>
+  <path d="M13 16.5 L23.5 47.5 L32 32.5 L40.5 47.5 L51 16.5" stroke="#14181e" stroke-width="6.75" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
