@@ -17,14 +17,14 @@ const payload = projects.map((p) => ({
   categories: p.categories.map((c) => labels.category(c, locale)).join(", "),
   difficulty: labels.difficulty(p.difficulty, locale),
   verified: isUnverifiedStatus(p.verified)
-    ? `${verifiedBadgeLabel(p.verified, locale)} — ${labels.verified(p.verified, locale)}`
+    ? `${verifiedBadgeLabel(p.verified, locale)}: ${labels.verified(p.verified, locale)}`
     : labels.verified(p.verified, locale),
   human: labels.human(p.human_involvement, locale),
   stars: p.stars,
   repo: p.repo_url,
 }));
 const fields = [
-  ["summary", locale === "zh" ? "摘要" : "Summary"],
+  ["summary", t(locale, "summaryLabel")],
   ["harnesses", "Harness"],
   ["models", t(locale, "filterModel")],
   ["categories", t(locale, "filterCategory")],

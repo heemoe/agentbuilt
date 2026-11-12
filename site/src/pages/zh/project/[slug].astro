@@ -95,7 +95,7 @@ const jsonLd = [
           <dt>{t(locale, "verified")}</dt>
           <dd>
             {isUnverifiedStatus(project.verified)
-              ? `${verifiedBadgeLabel(project.verified, locale)} — ${labels.verified(project.verified, locale)}`
+              ? `${verifiedBadgeLabel(project.verified, locale)}: ${labels.verified(project.verified, locale)}`
               : labels.verified(project.verified, locale)}
           </dd>
           {project.listed_at && (

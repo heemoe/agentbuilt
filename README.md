@@ -1,8 +1,10 @@
 # AgentBuilt
 
-A catalog of systems software built with AI agent harnesses — compilers, kernels, operating systems, databases, emulators, browser engines, and GPU/TPU kernels — with an emphasis on verifiable evidence and open contribution.
+A catalog of systems software written mostly by AI coding agents and agent harnesses: kernels, compilers, operating systems, databases, emulators, browser engines, GPU kernels, and TPU kernels.
 
-The site name, domain, and repository URL are centralized in [`site/src/site.config.ts`](site/src/site.config.ts):
+Each entry links to a first-party source (author README, official post, paper, or commit trailer). If the only source is a blog post or a paper and no public repository was found, the entry stays in the list and is marked unverified. To add or correct an entry, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+The site name, domain, and repository URL are in [`site/src/site.config.ts`](site/src/site.config.ts):
 
 - Name: **AgentBuilt**
 - Repo: [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)
@@ -10,11 +12,11 @@ The site name, domain, and repository URL are centralized in [`site/src/site.con
 
 ## Documents
 
-- [`research.md`](./research.md) — research notes (Chinese)
-- [`seed-projects.yaml`](./seed-projects.yaml) — seed catalog
-- [`schema/project.schema.json`](./schema/project.schema.json) — data schema
-- [`CONTRIBUTING.md`](./CONTRIBUTING.md) — how to submit an entry
-- [`logo-preview.png`](./logo-preview.png) — logo preview
+- [`research.md`](./research.md): research notes (Chinese)
+- [`seed-projects.yaml`](./seed-projects.yaml): seed catalog
+- [`schema/project.schema.json`](./schema/project.schema.json): data schema
+- [`CONTRIBUTING.md`](./CONTRIBUTING.md): how to submit an entry
+- [`logo-preview.png`](./logo-preview.png): logo preview
 
 ## Run the site
 

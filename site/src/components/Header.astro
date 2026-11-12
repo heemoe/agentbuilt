@@ -12,7 +12,7 @@ const { locale, current } = Astro.props;
       <LogoMark size={28} />
       <span>{siteConfig.name}</span>
     </a>
-    <nav class="nav" aria-label="Primary">
+    <nav class="nav" aria-label={t(locale, "navPrimary")}>
       <a href={withBase(localePath(locale, "/"))} aria-current={current === "home" ? "page" : undefined}>{t(locale, "navHome")}</a>
       <a href={withBase(localePath(locale, "/harness/"))} aria-current={current === "harness" ? "page" : undefined}>{t(locale, "navHarnesses")}</a>
       <a href={withBase(localePath(locale, "/compare/"))} aria-current={current === "compare" ? "page" : undefined}>{t(locale, "navCompare")}</a>
