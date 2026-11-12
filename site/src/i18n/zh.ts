@@ -3,7 +3,7 @@ import type { en } from "./en";
 export const zh: Record<keyof typeof en, string> = {
   metaDefaultTitle: "AgentBuilt：agent harness 写出来的系统软件",
   metaDefaultDescription:
-    "内核、编译器、操作系统、数据库这类项目，多半是 Claude Code、Codex、Cursor 等 AI agent harness 写的。只有博客、没有公开代码的，标成未验证。",
+    "收录 Claude Code、Codex、Cursor 等 AI agent harness 写出来的内核、编译器、操作系统和数据库。只有博客、没有公开代码的，标成未验证。",
   navHome: "目录",
   navHarnesses: "按 harness",
   navCompare: "对比",
