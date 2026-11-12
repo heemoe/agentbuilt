@@ -2,7 +2,7 @@
   <rect width="400" height="96" rx="20" fill="#12161b" stroke="rgba(239,236,228,0.2)"/>
   <g transform="translate(16,16)">
     <rect width="64" height="64" rx="14" fill="#d4893a"/>
-    <path d="M13 16.5 L23.5 47.5 L32 32.5 L40.5 47.5 L51 16.5" stroke="#14181e" stroke-width="6.75" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13 16.5 L23.5 47.5 L32 32.5 L40.5 47.5 L51 16.5" fill="none" stroke="#14181e" stroke-width="6.75" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <text x="96" y="61" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="34" letter-spacing="-0.6" fill="#efece4">What AI Built</text>
 </svg>
