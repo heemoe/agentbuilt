@@ -9,8 +9,8 @@ const harness: Record<string, { en: string; zh: string }> = {
   antigravity: { en: "Google Antigravity", zh: "Google Antigravity" },
   "deepseek-harness": { en: "DeepSeek Harness", zh: "DeepSeek Harness" },
   loom: { en: "Loom", zh: "Loom" },
-  custom: { en: "Custom harness", zh: "自己的 harness" },
-  unknown: { en: "Harness not named", zh: "没写 harness" },
+  custom: { en: "Custom harness", zh: "自己写的 harness" },
+  unknown: { en: "Harness not named", zh: "没注明 harness" },
 };
 
 const category: Record<string, { en: string; zh: string }> = {
@@ -23,7 +23,7 @@ const category: Record<string, { en: string; zh: string }> = {
   "js-engine": { en: "JavaScript engine", zh: "JavaScript 引擎" },
   "gpu-kernel": { en: "GPU kernel", zh: "GPU kernel" },
   "tpu-kernel": { en: "TPU kernel", zh: "TPU kernel" },
-  migration: { en: "Migration / rewrite", zh: "迁移 / 重写" },
+  migration: { en: "Migration / rewrite", zh: "迁移或重写" },
   other: { en: "Other", zh: "其他" },
 };
 
@@ -35,25 +35,25 @@ const difficulty: Record<string, { en: string; zh: string }> = {
 
 const verified: Record<string, { en: string; zh: string }> = {
   verified: { en: "Verified", zh: "已验证" },
-  official_claim_no_source: { en: "Official post, no repository", zh: "官方发了文，没有仓库" },
+  official_claim_no_source: { en: "Official post, no repository", zh: "官方发过文，没有仓库" },
   author_claimed: { en: "Author claimed", zh: "作者声明" },
-  commit_attribution: { en: "Commit trailer", zh: "Commit 署名" },
-  paper_claimed_release_not_found: { en: "Paper, repository not found", zh: "论文说有代码，仓库没找到" },
+  commit_attribution: { en: "Commit trailer", zh: "commit 署名" },
+  paper_claimed_release_not_found: { en: "Paper, repository not found", zh: "论文说会放代码，仓库没找到" },
   unverified: { en: "Unverified", zh: "未验证" },
 };
 
 const human: Record<string, { en: string; zh: string }> = {
-  autonomous_multi_agent: { en: "Mostly written by agents", zh: "代码主要是 agent 写的" },
+  autonomous_multi_agent: { en: "Mostly written by agents", zh: "主要是 agent 写的" },
   steered_agent: { en: "Person directed, agent wrote the code", zh: "人定方向，agent 写代码" },
   pair: { en: "Person and agent both wrote code", zh: "人和 agent 一起写的" },
-  unknown: { en: "Not stated", zh: "未说明" },
+  unknown: { en: "Not stated", zh: "没写明" },
 };
 
 const status: Record<string, { en: string; zh: string }> = {
   active: { en: "Active", zh: "活跃" },
   research: { en: "Research", zh: "研究" },
   no_public_source: { en: "No public code", zh: "没有公开代码" },
-  preserved_branch: { en: "Kept on a branch", zh: "留在分支上" },
+  preserved_branch: { en: "Kept on a branch", zh: "留在旧分支上" },
 };
 
 const evidenceType: Record<string, { en: string; zh: string }> = {
@@ -62,7 +62,7 @@ const evidenceType: Record<string, { en: string; zh: string }> = {
   author_readme: { en: "Author README", zh: "作者 README" },
   author_blog: { en: "Author blog", zh: "作者博客" },
   paper: { en: "Paper", zh: "论文" },
-  commit_trailer: { en: "Commit trailer", zh: "Commit 署名" },
+  commit_trailer: { en: "Commit trailer", zh: "commit 署名" },
   benchmark: { en: "Benchmark", zh: "基准测试" },
   official_social: { en: "Official post", zh: "官方帖子" },
 };
