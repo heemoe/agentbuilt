@@ -1,0 +1,30 @@
+{
+  "name": "agentbuilt",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "npm run check:data && astro build",
+    "preview": "astro preview --host",
+    "check:data": "node scripts/validate.mjs",
+    "assets": "node scripts/generate-assets.mjs"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.0",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "astro": "^5.15.1",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.34.5": true
+  }
+}

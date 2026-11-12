@@ -1,0 +1,17 @@
+---
+import { siteConfig, type Locale } from "../site.config";
+import { t } from "../i18n";
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="footer-nav">
+      <a href={siteConfig.repo + "/blob/main/research.md"}>{t(locale, "footerResearch")}</a>
+      <a href={siteConfig.repo + "/blob/main/schema/project.schema.json"}>{t(locale, "footerSchema")}</a>
+      <a href={siteConfig.repo + "/blob/main/CONTRIBUTING.md"}>{t(locale, "footerContributing")}</a>
+      <a href={siteConfig.repo}>{t(locale, "footerRepo")}</a>
+    </nav>
+    <p>{t(locale, "footerCopy")}</p>
+  </div>
+</footer>

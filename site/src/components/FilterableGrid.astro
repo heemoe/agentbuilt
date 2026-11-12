@@ -1,0 +1,122 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import type { Project } from "../data/types";
+import { labels, harnessOrder, verifiedFilterValues, verifiedBadgeLabel } from "../data/labels";
+import { t } from "../i18n";
+import type { Locale } from "../site.config";
+
+interface Props {
+  locale: Locale;
+  projects: Project[];
+  harnesses: string[];
+  models: string[];
+  categories: string[];
+}
+const { locale, projects, harnesses, models, categories } = Astro.props;
+const harnessesSorted = [...harnesses].sort((a, b) => harnessOrder.indexOf(a) - harnessOrder.indexOf(b));
+
+function verifiedFilterLabel(id: string): string {
+  if (id === "unverified") return verifiedBadgeLabel("unverified", locale);
+  return labels.verified(id, locale);
+}
+---
+<section class="wrap" id="catalog">
+  <form class="filters" id="filters" data-no-results={t(locale, "noResults")} data-count={t(locale, "resultsCount")}>
+    <label>
+      {t(locale, "filterHarness")}
+      <select name="harness">
+        <option value="">{t(locale, "filterAll")}</option>
+        {harnessesSorted.map((id) => <option value={id}>{labels.harness(id, locale)}</option>)}
+      </select>
+    </label>
+    <label>
+      {t(locale, "filterModel")}
+      <select name="model">
+        <option value="">{t(locale, "filterAll")}</option>
+        {models.map((id) => <option value={id}>{id}</option>)}
+      </select>
+    </label>
+    <label>
+      {t(locale, "filterCategory")}
+      <select name="category">
+        <option value="">{t(locale, "filterAll")}</option>
+        {categories.map((id) => <option value={id}>{labels.category(id, locale)}</option>)}
+      </select>
+    </label>
+    <label>
+      {t(locale, "filterDifficulty")}
+      <select name="difficulty">
+        <option value="">{t(locale, "filterAll")}</option>
+        {["medium", "high", "very-high"].map((id) => <option value={id}>{labels.difficulty(id, locale)}</option>)}
+      </select>
+    </label>
+    <label>
+      {t(locale, "filterVerified")}
+      <select name="verified">
+        <option value="">{t(locale, "filterAll")}</option>
+        {verifiedFilterValues.map((id) => <option value={id}>{verifiedFilterLabel(id)}</option>)}
+      </select>
+    </label>
+    <button type="reset">{t(locale, "filterReset")}</button>
+  </form>
+  <p class="count" id="result-count">{t(locale, "resultsCount", { n: projects.length })}</p>
+  <div class="grid" id="project-grid">
+    {projects.map((project) => <ProjectCard project={project} locale={locale} />)}
+  </div>
+</section>
+<script is:inline>
+  (function () {
+    const form = document.getElementById("filters");
+    const grid = document.getElementById("project-grid");
+    const count = document.getElementById("result-count");
+    if (!form || !grid || !count) return;
+    const cards = Array.from(grid.querySelectorAll(".card"));
+    const tpl = form.getAttribute("data-count") || "{n}";
+    const none = form.getAttribute("data-no-results") || "";
+
+    function apply() {
+      const data = new FormData(form);
+      const harness = String(data.get("harness") || "");
+      const model = String(data.get("model") || "");
+      const category = String(data.get("category") || "");
+      const difficulty = String(data.get("difficulty") || "");
+      const verified = String(data.get("verified") || "");
+      let visible = 0;
+      cards.forEach((card) => {
+        const verifiedOk = !verified || (
+          verified === "unverified"
+            ? card.dataset.verifiedGroup === "unverified"
+            : card.dataset.verified === verified
+        );
+        const ok =
+          (!harness || (card.dataset.harnesses || "").split(",").includes(harness)) &&
+          (!model || (card.dataset.models || "").split(",").includes(model)) &&
+          (!category || (card.dataset.categories || "").split(",").includes(category)) &&
+          (!difficulty || card.dataset.difficulty === difficulty) &&
+          verifiedOk;
+        card.hidden = !ok;
+        if (ok) visible += 1;
+      });
+      count.textContent = visible ? tpl.replace("{n}", String(visible)) : none;
+      const params = new URLSearchParams();
+      if (harness) params.set("harness", harness);
+      if (model) params.set("model", model);
+      if (category) params.set("category", category);
+      if (difficulty) params.set("difficulty", difficulty);
+      if (verified) params.set("verified", verified);
+      const next = params.toString();
+      const url = next ? `${location.pathname}?${next}` : location.pathname;
+      history.replaceState(null, "", url);
+    }
+
+    const current = new URLSearchParams(location.search);
+    ["harness", "model", "category", "difficulty", "verified"].forEach((name) => {
+      const value = current.get(name);
+      const el = form.elements.namedItem(name);
+      if (value && el) el.value = value;
+    });
+    form.addEventListener("change", apply);
+    form.addEventListener("reset", () => setTimeout(apply, 0));
+    apply();
+  })();
+</script>

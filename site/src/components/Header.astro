@@ -1,0 +1,27 @@
+---
+import LogoMark from "./LogoMark.astro";
+import { siteConfig, localePath, switchLocale, withBase, type Locale } from "../site.config";
+import { t } from "../i18n";
+
+interface Props { locale: Locale; current?: "home" | "harness" | "compare"; }
+const { locale, current } = Astro.props;
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href={withBase(localePath(locale, "/"))}>
+      <LogoMark size={28} />
+      <span>{siteConfig.name}</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href={withBase(localePath(locale, "/"))} aria-current={current === "home" ? "page" : undefined}>{t(locale, "navHome")}</a>
+      <a href={withBase(localePath(locale, "/harness/"))} aria-current={current === "harness" ? "page" : undefined}>{t(locale, "navHarnesses")}</a>
+      <a href={withBase(localePath(locale, "/compare/"))} aria-current={current === "compare" ? "page" : undefined}>{t(locale, "navCompare")}</a>
+      <a href={siteConfig.repo + "/blob/main/CONTRIBUTING.md"}>{t(locale, "navContribute")}</a>
+      <div class="lang-switch" aria-label={t(locale, "langSwitchLabel")}>
+        {siteConfig.locales.map((l) => (
+          <a href={switchLocale(Astro.url.pathname, l.id)} aria-current={l.id === locale ? "true" : undefined} lang={l.htmlLang} hreflang={l.hreflang}>{l.label}</a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
