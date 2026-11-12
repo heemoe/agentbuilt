@@ -8,10 +8,10 @@ projects:
     name: Ginux
     summary:
       en: A Rust research kernel, later a userspace Linux-compatibility kernel, built with OpenAI Codex under human-directed architecture and acceptance gates.
-      zh: 用 OpenAI Codex 在人类设定的架构与验收门下写出的 Rust 研究内核；可引导阶段已冻结，主线转为用户态兼容内核。
+      zh: OpenAI Codex 写的 Rust 研究内核，架构和验收条件由人来定。能引导的那一阶段已经冻结，主线改成了用户态的 Linux 兼容内核。
     description:
       en: Gregory Kurtzer reports that one persistent Codex task using GPT-5.6 Sol produced Ginux over about eleven days. The standalone kernel booted via UEFI and ran selected unmodified Alpine programs and a Rocky Linux 10 systemd boot. Active development now continues as a userspace kernel; the bootable research snapshot lives on the bootable-kernel branch.
-      zh: Gregory Kurtzer 记录：一次持续的 Codex 任务（GPT-5.6 Sol）在约十一天内写出 Ginux。独立内核经 UEFI 引导，并跑过部分未修改的 Alpine 程序以及 Rocky Linux 10 的 systemd 启动。当前主线改为用户态内核，可引导研究快照保留在 bootable-kernel 分支。
+      zh: Gregory Kurtzer 写过：一个一直开着的 Codex 任务，模型是 GPT-5.6 Sol，大约十一天做出 Ginux。独立内核用 UEFI 引导，跑过一部分没改过的 Alpine 程序，也跑过 Rocky Linux 10 的 systemd 启动。现在还在做的是用户态内核，能引导的研究快照留在 bootable-kernel 分支。
     repo_url: "https://github.com/gmkurtzer/ginux"
     homepage_url: null
     article_urls:
@@ -33,7 +33,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: The author calls this Human-Directed Agentic Engineering (HDAE). The human set architecture, constraints, and acceptance criteria; Codex implemented, booted, diagnosed, and revised. The human remains responsible for claims. Codex is not listed as an author.
-      zh: 作者称为 Human-Directed Agentic Engineering：人负责架构、约束和验收，Codex 负责实现、引导、诊断和修订。主张与发布责任仍在人类作者，Codex 未列为作者。
+      zh: 作者把这套做法叫做 Human-Directed Agentic Engineering（HDAE）。人定架构、约束和验收，Codex 负责实现、引导、排查和修改。说法和发布仍由人负责，Codex 没有列为作者。
     verified: verified
     stars: 583
     stars_checked_at: "2026-11-12"
@@ -43,16 +43,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: The paper file was removed from main (blob URL now 404) but is still available on the bootable-kernel branch, which returned HTTP 200 on 2026-11-12.
-      zh: 论文已从 main 移除（原 blob 现为 404），但仍可在 bootable-kernel 分支打开（2026-11-12 返回 200）。
+      zh: 论文文件已经从 main 拿掉，原来的 blob 现在是 404。bootable-kernel 分支上还能打开，2026-11-12 返回 200。
 
   - id: maxkernel
     name: MaxKernel
     summary:
       en: A multi-agent system that generates and tunes high-performance TPU kernels, evaluated with Gemini 3.1 Pro and released under Google's accelerator-agents repository.
-      zh: 面向 TPU 的多 agent kernel 生成与调优系统，论文实验使用 Gemini 3.1 Pro，代码发布在 Google 的 accelerator-agents 仓库中。
+      zh: 一套多 agent 系统，用来生成和调优高性能 TPU kernel。实验用的是 Gemini 3.1 Pro，代码放在 Google 的 accelerator-agents 仓库。
     description:
       en: The paper describes HITL, fully autonomous, and graph-based search paradigms sharing planning, implementation, debugging, testing, and profiling sub-agents. Experiments on JaxBench and real model workloads were run with Gemini 3.1 Pro. Code is published in the maxkernel directory of AI-Hypercomputer/accelerator-agents.
-      zh: 论文描述了人在回路、全自动以及基于图搜索的三种范式，共享规划、实现、调试、测试和剖析子 agent。JaxBench 与真实模型负载上的实验使用 Gemini 3.1 Pro。代码位于 AI-Hypercomputer/accelerator-agents 的 maxkernel 目录。
+      zh: 论文写了三种做法：有人参与、完全自动、按图搜索。规划、实现、调试、测试、剖析这几类子 agent 是共用的。JaxBench 和真实模型负载上的实验用 Gemini 3.1 Pro。代码在 AI-Hypercomputer/accelerator-agents 的 maxkernel 目录。
     repo_url: "https://github.com/AI-Hypercomputer/accelerator-agents"
     homepage_url: "https://github.com/AI-Hypercomputer/accelerator-agents/tree/main/maxkernel"
     article_urls:
@@ -72,7 +72,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: The system includes a human-in-the-loop agent as well as autonomous loops. The paper is a research artifact; the degree of hand-written kernel code in the repo is not quantified here.
-      zh: 系统包含人在回路与全自动循环。论文是研究陈述，仓库中手写 kernel 的比例此处未量化。
+      zh: 系统里既有人参与的 agent，也有自动循环。论文是研究记录。仓库里有多少 kernel 是手写的，这里没有数。
     verified: verified
     stars: 103
     stars_checked_at: "2026-11-12"
@@ -83,16 +83,16 @@ projects:
     first_public_at: "2026-09-03"
     notes:
       en: The paper URL uses MaxKernel (capital M); the GitHub tree that returned 200 is maxkernel in lowercase. The directory listing included adk and claude-code helper folders; the evaluated model in the paper is Gemini 3.1 Pro.
-      zh: 论文链接写的是 MaxKernel，GitHub 上确认可访问的路径是小写 maxkernel。目录中有 adk 与 claude-code 辅助文件夹；论文中的评估模型是 Gemini 3.1 Pro。
+      zh: 论文链接写的是 MaxKernel，GitHub 上能打开的路径是小写 maxkernel。目录里有 adk 和 claude-code 的辅助文件夹。论文里拿来评估的模型是 Gemini 3.1 Pro。
 
   - id: antigravity-os
     name: Antigravity OS experiment
     summary:
       en: Google's official Antigravity 2.0 demo in which a team of agents on Gemini 3.5 Flash built a functional OS that could run FreeDoom, from a single prompt.
-      zh: Google 官方 Antigravity 2.0 演示：一队运行 Gemini 3.5 Flash 的 agent 从单条提示出发，做出能运行 FreeDoom 的功能型操作系统。
+      zh: Google 官方的 Antigravity 2.0 演示。一队跑着 Gemini 3.5 Flash 的 agent，从一条提示做出能跑 FreeDoom 的操作系统。
     description:
       en: The Antigravity blog (19 May 2026) reports 93 subagents, 15,314 model calls, more than 339M input tokens (over 2.6B including cache, output, and thinking), and an API-price cost of $916.92. The post lists missing features such as floating-point math, hardware acceleration, complex multi-threading, sandboxing, and JIT. No public source repository for the generated OS was found.
-      zh: 官方博客（2026-05-19）给出 93 个 subagent、15,314 次模型调用、超过 3.39 亿输入 token（含 cache/输出/思考则超过 26 亿）以及按 API 计价 916.92 美元。文中列出无浮点、无硬件加速、无复杂多线程、无沙箱、无 JIT 等限制。未找到该 OS 的公开源码仓库。
+      zh: Antigravity 博客（2026-05-19）写了 93 个 subagent、15,314 次模型调用，输入 token 超过 3.39 亿（把 cache、输出和思考算进去则超过 26 亿），按 API 价格是 916.92 美元。文中也列了缺的东西：浮点、硬件加速、复杂多线程、沙箱、JIT。生成出来的 OS 没有找到公开仓库。
     repo_url: null
     homepage_url: "https://antigravity.google/blog/google-antigravity-built-an-os"
     article_urls:
@@ -109,7 +109,7 @@ projects:
     human_involvement: autonomous_multi_agent
     human_involvement_notes:
       en: The post says the successful run had no additional human guidance or corrections after the initial prompt, after earlier runs were found to have cheated by reading leftover conversation history.
-      zh: 博文称成功的那一轮在初始提示之后没有额外的人类指导或纠正；更早的一轮曾因读取未清理的历史对话而被发现“作弊”。
+      zh: 博文说，成功的那一轮在最初那条提示之后，没有人再指导或修改。更早的一轮读了没清掉的对话记录，被发现在「作弊」。
     verified: official_claim_no_source
     stars: null
     stars_checked_at: "2026-11-12"
@@ -120,16 +120,16 @@ projects:
     first_public_at: "2026-05-19"
     notes:
       en: Official announcement only. Do not treat similarly named third-party repositories as this experiment.
-      zh: 目前只有官方公告。不要把名称相近的第三方仓库当成该实验产物。
+      zh: 目前只有官方公告。名字相近的第三方仓库，不要当成这次实验的产物。
 
   - id: rabbit
     name: Rabbit
     summary:
       en: A from-scratch Linux-ABI-compatible x86_64 kernel in Rust, written by an AI agent against human-set milestones, with OpenCode commit trailers.
-      zh: 从零编写的、兼容 Linux ABI 的 x86_64 Rust 内核；作者声明由 AI agent 按人类里程碑编写，commit 带有 OpenCode trailer。
+      zh: 从零写的 x86_64 Rust 内核，兼容 Linux ABI。作者说代码是 AI agent 按人定的里程碑写的，commit 里有 OpenCode 的 trailer。
     description:
       en: "Rabbit includes a kernel, a no-dependency inference runtime, and an in-guest agent loop. The README states that design and verification belong to a human and that the code was written by an AI agent. Recent commits include Co-Authored-By: opencode <noreply@opencode.ai>. The project is explicitly not production-ready."
-      zh: "项目包含内核、无外部依赖的推理运行时以及客机内的 agent 循环。README 写明设计与验证属于人类，代码由 AI agent 编写。近期 commit 含 Co-Authored-By: opencode。项目明确尚未达到生产可用。"
+      zh: "Rabbit 有内核、不依赖外部库的推理运行时，还有客户机里的 agent 循环。README 写设计和验证归人，代码是 AI agent 写的。近期 commit 带有 Co-Authored-By: opencode。项目写明还不能拿去生产。"
     repo_url: "https://github.com/NicolasBecasAzagra/Rabbit"
     homepage_url: "https://nicolasbecasazagra.github.io/Rabbit/"
     article_urls:
@@ -150,7 +150,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: The author says design decisions, criteria, and verification belong to a human; the agent wrote the code against those criteria. The underlying model is not named in the README.
-      zh: 作者称设计决策、标准和验证属于人类，agent 按这些标准写代码。README 未写出具体模型。
+      zh: 作者说设计决策、标准和验证归人，agent 按这些标准写代码。README 没写模型名。
     verified: commit_attribution
     stars: 1
     stars_checked_at: "2026-11-12"
@@ -160,16 +160,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: Model is unknown. The quoted README wording is a close paraphrase of the authorship section; see the repository README and REPORT.md for the full text.
-      zh: 模型未知。README 引文是对作者声明段落的紧贴转述，完整表述见仓库 README 与 REPORT.md。
+      zh: 模型未知。README 引文是把作者声明改写得很近，全文看仓库 README 和 REPORT.md。
 
   - id: minisqlite
     name: minisqlite
     summary:
       en: A Rust reimplementation of SQLite's SQL dialect, planner, executor, transactions, and on-disk format, published by Cursor.
-      zh: Cursor 发布的 SQLite Rust 重实现，覆盖 SQL 方言、规划器、执行器、事务以及官方磁盘格式。
+      zh: Cursor 发布的 SQLite Rust 重写，包括 SQL 方言、规划器、执行器、事务和官方磁盘格式。
     description:
       en: The repository describes about 200,000 lines of Rust, 5,650 tests, file-format compatibility with sqlite3, and a tiny public API. The README itself does not discuss agent authorship. Cursor's official LinkedIn post says a team of agents rebuilt SQLite from its 835-page manual.
-      zh: 仓库描述约 20 万行 Rust、5,650 个测试、与 sqlite3 的文件格式双向兼容，以及极小的公开 API。README 本身几乎不谈 agent 作者身份。Cursor 官方 LinkedIn 帖称由一轮 agent 团队根据 835 页手册重写。
+      zh: 仓库写了大约 20 万行 Rust、5,650 个测试，文件格式和 sqlite3 兼容，公开 API 很小。README 几乎没提是 agent 写的。Cursor 官方 LinkedIn 帖说，一组 agent 照着 835 页手册把 SQLite 重写了一遍。
     repo_url: "https://github.com/cursor/minisqlite"
     homepage_url: null
     article_urls:
@@ -190,7 +190,7 @@ projects:
     human_involvement: autonomous_multi_agent
     human_involvement_notes:
       en: Authorship details come from Cursor's official social post, not from the README. Human involvement inside the run is not fully specified in the sources checked.
-      zh: 作者身份细节来自 Cursor 官方社交帖，而非 README。已核对来源中未完整说明人类在运行中的参与程度。
+      zh: 是谁写的，依据来自 Cursor 官方的社交帖，不是 README。核对过的材料里，没有把人在这次运行中参与多少写全。
     verified: author_claimed
     stars: 292
     stars_checked_at: "2026-11-12"
@@ -200,16 +200,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: README does not mention agents. If the LinkedIn post becomes unavailable, this entry's authorship evidence weakens. Model name was not found in the sources checked.
-      zh: README 未提及 agent。若 LinkedIn 帖无法访问，作者身份证据会变弱。已核来源中未找到模型名。
+      zh: README 没提 agent。LinkedIn 帖要是打不开，这条的作者证据就弱了。核对过的材料里没找到模型名。
 
   - id: fastrender
     name: FastRender
     summary:
       en: An experimental Rust browser engine developed as part of Cursor's research into collaborative parallel AI coding agents.
-      zh: 实验性 Rust 浏览器引擎，作为 Cursor 对并行协作式 AI coding agent 研究的一部分开发。
+      zh: 实验性的 Rust 浏览器引擎，是 Cursor 研究并行协作的 AI coding agent 时做出来的一部分。
     description:
       en: FastRender parses HTML/CSS, computes styles, performs layout, paints pixels, includes a desktop shell, and embeds a JavaScript engine. The README links the project to Cursor's Scaling Agents research post.
-      zh: FastRender 解析 HTML/CSS、计算样式、做布局和绘制，包含桌面外壳，并嵌入 JavaScript 引擎。README 将该项目链向 Cursor 的 Scaling Agents 研究博文。
+      zh: FastRender 会解析 HTML/CSS、算样式、做布局和绘制，自带桌面壳，还嵌了 JavaScript 引擎。README 把项目连到 Cursor 的 Scaling Agents 研究博文。
     repo_url: "https://github.com/wilsonzlin/fastrender"
     homepage_url: null
     article_urls:
@@ -229,7 +229,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: Official Cursor research context. The exact split of human-written versus agent-written lines is not quantified in the sources checked.
-      zh: 属于 Cursor 官方研究语境。已核来源中没有量化人类与 agent 的逐行比例。
+      zh: 这是 Cursor 的官方研究。核对过的材料里，没有写人和 agent 各写了多少行。
     verified: verified
     stars: 1579
     stars_checked_at: "2026-11-12"
@@ -239,16 +239,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: Underlying model names were not stated in the README excerpt reviewed.
-      zh: 所审阅的 README 摘录未写出底层模型名。
+      zh: 看过的 README 摘录没写底层模型名。
 
   - id: cursor-nvidia-kernels
     name: Cursor NVIDIA kernel optimizations
     summary:
       en: Kernels produced by Cursor's multi-agent system in a collaboration with NVIDIA, reported to reach a 38% geomean speedup on 235 Blackwell problems.
-      zh: Cursor 与 NVIDIA 合作中由多 agent 系统产出的 GPU kernel；官方博文称在 235 个 Blackwell 题目上取得 38% 几何平均加速。
+      zh: Cursor 和 NVIDIA 合作时，多 agent 系统写出的 GPU kernel。官方博文说，235 道 Blackwell 题上几何平均加速 38%。
     description:
       en: The 14 April 2026 Cursor blog describes a planner-and-worker multi-agent run over three weeks, writing CUDA C with inline PTX and CuTe DSL, benchmarked with SOL-ExecBench on Blackwell 200 GPUs. Final artifacts are published in anysphere/kernel-optimization-results.
-      zh: Cursor 于 2026-04-14 的博文描述了为期三周的 planner/worker 多 agent 运行，用带内联 PTX 的 CUDA C 以及 CuTe DSL 编写，并在 Blackwell 200 上用 SOL-ExecBench 评测。最终工件发布在 anysphere/kernel-optimization-results。
+      zh: Cursor 2026-04-14 的博文写了一次为期三周的运行：planner 和 worker 组成多 agent，用带内联 PTX 的 CUDA C 和 CuTe DSL 写 kernel，在 Blackwell 200 上用 SOL-ExecBench 测。最后的结果放在 anysphere/kernel-optimization-results。
     repo_url: "https://github.com/anysphere/kernel-optimization-results"
     homepage_url: "https://cursor.com/blog/multi-agent-kernels"
     article_urls:
@@ -268,7 +268,7 @@ projects:
     human_involvement: autonomous_multi_agent
     human_involvement_notes:
       en: The blog presents the run as autonomous after the experiment was set up, with a planner distributing work across workers. Model names for that run were not extracted from the post.
-      zh: 博文将布置完成后的运行描述为自主进行，由 planner 向 worker 分发任务。该文中未提取到具体模型名。
+      zh: 博文把实验搭好之后的运行说成自动的，planner 把任务分给 worker。文里没写具体模型名。
     verified: verified
     stars: 10
     stars_checked_at: "2026-11-12"
@@ -282,10 +282,10 @@ projects:
     name: one-agent-one-browser
     summary:
       en: A from-scratch HTML/CSS browser in Rust, built in about three days by one human directing one Codex agent, with no third-party Rust crates.
-      zh: 用 Rust 从零实现的 HTML/CSS 浏览器；作者用约三天时间与一个 Codex agent 协作完成，不使用第三方 Rust crate。
+      zh: 用 Rust 从零写的 HTML/CSS 浏览器。一个人带着一个 Codex agent，大约三天做完，不用第三方 Rust crate。
     description:
       en: The GitHub description calls it a browser built by one human and one agent. The repository README does not name the tool. The author's 27 January 2026 post states that after about a day with Codex the program could fetch and render sites via X11 and cURL, with an empty Cargo.lock.
-      zh: GitHub 简介称由一个人类与一个 agent 共同完成。仓库 README 未写工具名。作者 2026-01-27 的文章写明：与 Codex 一起大约一天后，程序已能通过 X11 和 cURL 抓取并渲染网站，且 Cargo.lock 为空。
+      zh: GitHub 简介写的是一个人和一个 agent 一起做的浏览器。仓库 README 没写工具名。作者 2026-01-27 的文章说，和 Codex 一起大约一天后，程序已经能用 X11 和 cURL 抓页面并渲染，Cargo.lock 是空的。
     repo_url: "https://github.com/embedding-shapes/one-agent-one-browser"
     homepage_url: null
     article_urls:
@@ -307,7 +307,7 @@ projects:
     human_involvement: pair
     human_involvement_notes:
       en: The author set tight constraints (three days, no third-party Rust crates, readable files) and worked with a single agent. This is pair-style direction, not an unattended swarm.
-      zh: 作者设定了严格约束（三天、无第三方 Rust crate、代码可读）并与单个 agent 协作，属于结对式指导，而非无人值守的 swarm。
+      zh: 作者把条件定得很紧：三天、不用第三方 Rust crate、代码要可读，并且只跟一个 agent 一起做。这是结对，不是放着一群 agent 没人看。
     verified: verified
     stars: 228
     stars_checked_at: "2026-11-12"
@@ -318,16 +318,16 @@ projects:
     first_public_at: "2026-01-27"
     notes:
       en: The default git branch is master; fetching README from main returns 404. The exact Codex model version is not named in the post excerpt reviewed.
-      zh: 默认分支是 master，从 main 拉取 README 会 404。所审阅的文章摘录未写出 Codex 的具体模型版本。
+      zh: 默认分支是 master，从 main 拉 README 会 404。看过的文章摘录没写 Codex 的具体模型版本。
 
   - id: claudes-c-compiler
     name: Claude's C Compiler (CCC)
     summary:
       en: A from-scratch, dependency-free C compiler in Rust, written by parallel Claude Code agents running Claude Opus 4.6, capable of building Linux 6.9 and other large C projects.
-      zh: 用 Rust 从零实现、无编译器专用依赖的 C 编译器，由并行的 Claude Code（Claude Opus 4.6）编写，能够构建 Linux 6.9 等大型 C 项目。
+      zh: 用 Rust 从零写的 C 编译器，没有外部依赖。并行的 Claude Code（Claude Opus 4.6）写的，能编 Linux 6.9 这类大型 C 项目。
     description:
       en: Anthropic's research post describes 16 agents, nearly 2,000 Claude Code sessions, and about $20,000 in API cost. The repository states that aside from one human-written paragraph, 100% of the code and documentation was written by Claude Opus 4.6. A human wrote test cases but did not pair-program or give code-quality feedback.
-      zh: Anthropic 研究博文描述了 16 个 agent、近 2000 次 Claude Code 会话，以及约 2 万美元 API 成本。仓库声明除一段人类写的说明外，代码与文档 100% 由 Claude Opus 4.6 编写。人类编写了测试用例，但没有结对调试，也没有提供代码质量反馈。
+      zh: Anthropic 的研究博文写了 16 个 agent、将近 2000 次 Claude Code 会话，API 大约花了 2 万美元。仓库说，除了人写的一段说明，代码和文档 100% 是 Claude Opus 4.6 写的。人写了测试用例，没有结对调试，也没有就代码质量给反馈。
     repo_url: "https://github.com/anthropics/claudes-c-compiler"
     homepage_url: "https://www.anthropic.com/research/building-c-compiler"
     article_urls:
@@ -348,7 +348,7 @@ projects:
     human_involvement: autonomous_multi_agent
     human_involvement_notes:
       en: A human wrote tests the agents were told to pass and designed the parallel harness, but did not interactively pair-program or review code quality during development.
-      zh: 人类编写了要求 agent 通过的测试，并设计了并行 harness，但开发过程中没有交互式结对编程，也没有提供代码质量评审。
+      zh: 人写了要 agent 通过的测试，也设计了并行 harness。开发过程中没有坐在一起结对写，也没有评代码质量。
     verified: verified
     stars: 2828
     stars_checked_at: "2026-11-12"
@@ -358,16 +358,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: Included as the best-documented Claude-code systems landmark, even though this seed set emphasizes non-Claude work. The README warns the compiler is not validated for correctness and is not recommended for use.
-      zh: 尽管本轮种子侧重非 Claude 项目，仍收入这个证据最完整的 Claude 系统级标杆。README 警告该编译器未经正确性验证，不建议使用。
+      zh: 这次种子更偏非 Claude 的项目，这条还是收了，因为在 Claude 这边它的记录最全。README 提醒这个编译器没做过正确性验证，不建议拿去用。
 
   - id: jsse
     name: JSSE
     summary:
       en: A from-scratch JavaScript engine in Rust that the author says was built entirely by Claude Code and became the first engine to pass 100% of test262 non-staging tests.
-      zh: 用 Rust 从零实现的 JavaScript 引擎。作者称全部由 Claude Code 编写，并成为首个通过 100% 非 staging test262 的引擎。
+      zh: 用 Rust 从零写的 JavaScript 引擎。作者说全是 Claude Code 写的，而且是第一个把非 staging 的 test262 全部通过的引擎。
     description:
       en: Paulo Matos's 17 March 2026 post reports 42 days (27 January to 9 March 2026), about 170,000 lines of Rust, 592 commits, and roughly four hours of hands-on time. Claude Code ran in YOLO mode. The author says he did not write a single line of Rust.
-      zh: Paulo Matos 在 2026-03-17 的文章中记录：42 天（2026-01-27 至 03-09）、约 17 万行 Rust、592 次提交、大约 4 小时上手时间。Claude Code 运行在 YOLO 模式。作者称自己没有手写任何一行 Rust。
+      zh: Paulo Matos 在 2026-03-17 的文章里写：42 天（2026-01-27 到 03-09），大约 17 万行 Rust，592 次提交，亲手大约花了 4 小时。Claude Code 开的是 YOLO 模式。作者说自己一行 Rust 都没写。
     repo_url: "https://github.com/pmatos/jsse"
     homepage_url: "https://p.ocmatos.com/blog/jsse-a-javascript-engine-built-by-an-agent.html"
     article_urls:
@@ -388,7 +388,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: About four hours of human hands-on time over six weeks, mostly launching loops, checking progress, and writing prompts. The author set up CLAUDE.md, PLAN.md, and skills at the start.
-      zh: 六周内大约四小时的人类上手时间，主要用于启动循环、查看进度和写提示。作者一开始搭建了 CLAUDE.md、PLAN.md 和 skills。
+      zh: 六个星期里，人亲手花了大约四小时，多半是开循环、看进度、写提示。一开始作者准备了 CLAUDE.md、PLAN.md 和 skills。
     verified: verified
     stars: 74
     stars_checked_at: "2026-11-12"
@@ -399,16 +399,16 @@ projects:
     first_public_at: "2026-03-17"
     notes:
       en: The exact Claude model version is not clearly named in the excerpts reviewed. Test262 claims are the author's; this catalog does not independently re-run the suite.
-      zh: 所审阅摘录未明确写出 Claude 的具体模型版本。test262 声明来自作者，本目录未独立重跑该测试套件。
+      zh: 看过的摘录没写清 Claude 的具体模型版本。test262 的说法来自作者，这个目录没有自己再跑一遍测试套件。
 
   - id: vibesql
     name: VibeSQL
     summary:
       en: A Rust SQL database the authors describe as 100% AI-generated, built with Claude Code and the Loom orchestration tool, with public SQL conformance dashboards.
-      zh: 作者称为 100% 由 AI 生成的 Rust SQL 数据库，使用 Claude Code 与 Loom 编排，并提供公开的 SQL 符合性看板。
+      zh: 作者说这是 100% 由 AI 生成的 Rust SQL 数据库，用 Claude Code 和 Loom 来编排，SQL 符合性有公开页面可以看。
     description:
       en: The README claims 739/739 SQL:1999 core tests, 100% SQLLogicTest conformance across hundreds of files, and more than 7,000 unit tests, plus replication, MVCC, and a browser demo at vibesql.org.
-      zh: README 声称 SQL:1999 核心测试 739/739、数百个文件上的 SQLLogicTest 全部通过，以及 7000 以上单元测试，并包含复制、MVCC 和 vibesql.org 上的浏览器演示。
+      zh: README 称 SQL:1999 核心测试是 739/739，几百个文件上的 SQLLogicTest 全部通过，单元测试超过 7000 个，另外还有复制、MVCC，以及 vibesql.org 上的浏览器演示。
     repo_url: "https://github.com/rjwalters/vibesql"
     homepage_url: "https://vibesql.org/"
     article_urls: []
@@ -427,7 +427,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: The README attributes implementation to agents and points to CLAUDE.md and Loom for the workflow. It does not quantify remaining human-authored code.
-      zh: README 将实现归功于 agent，并指向 CLAUDE.md 与 Loom 工作流，但未量化仍由人类编写的代码量。
+      zh: README 把实现归到 agent 身上，工作流指向 CLAUDE.md 和 Loom，但没写还剩多少代码是人写的。
     verified: author_claimed
     stars: 34
     stars_checked_at: "2026-11-12"
@@ -437,16 +437,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: Conformance numbers are taken from the project's own badges and site, not independently re-verified in this research pass. Model names are not stated in the README excerpt.
-      zh: 符合性数字来自项目自己的徽章和网站，本轮调研未独立复测。README 摘录未写出模型名。
+      zh: 符合性数字来自项目自己的徽章和网站，这次没有另行复测。README 摘录没写模型名。
 
   - id: vibix
     name: vibix
     summary:
       en: An experimental Rust x86_64 kernel built almost entirely by Claude and Cursor agents looping through plan, implementation, pull request, review, and merge.
-      zh: 实验性 Rust x86_64 内核，几乎完全由 Claude 与 Cursor agent 按计划、实现、PR、评审和合并的循环编写。
+      zh: 实验性的 Rust x86_64 内核，几乎全是 Claude 和 Cursor 的 agent 写的。循环是计划、实现、PR、评审、合并。
     description:
       en: The repository includes Claude Code skills for a manager, OS researcher, and engineer, plus a Cursor Cloud counterpart. The long-term goal is a full operating system; the project is framed as a test of how far autonomous agents can get.
-      zh: 仓库包含面向 manager、OS researcher 和 engineer 的 Claude Code skill，以及对应的 Cursor Cloud skill。长期目标是完整操作系统；项目被定位为观察自主 agent 能走多远的实验。
+      zh: 仓库里有给 manager、OS researcher、engineer 用的 Claude Code skill，也有对应的 Cursor Cloud skill。长期目标是一整套操作系统。项目想看自主 agent 能走到哪一步。
     repo_url: "https://github.com/dburkart/vibix"
     homepage_url: null
     article_urls: []
@@ -462,7 +462,7 @@ projects:
     human_involvement: autonomous_multi_agent
     human_involvement_notes:
       en: Humans appear to have designed the agent bureaucracy and can still intervene when CI or main is broken. Model versions are not named in the README excerpt.
-      zh: 人类似乎设计了这套 agent 分工，并在 CI 或 main 损坏时介入。README 摘录未写出模型版本。
+      zh: 看起来是人设计了这套 agent 的分工，CI 或 main 坏的时候人还会插手。README 摘录没写模型版本。
     verified: author_claimed
     stars: 5
     stars_checked_at: "2026-11-12"
@@ -475,10 +475,10 @@ projects:
     name: ZeroWeb
     summary:
       en: An experimental cross-platform Rust browser whose authors say almost all product and engine code is written by AI, with a human limited to design, decisions, and verification.
-      zh: 实验性跨平台 Rust 浏览器。作者称产品与引擎代码几乎全部由 AI 编写，人类只负责方案设计、关键决策和结果验证。
+      zh: 实验性的跨平台 Rust 浏览器。作者说产品和引擎的代码几乎都是 AI 写的，人只做方案、拍板和验收。
     description:
       en: The project ships ZeroWebView and ZeroBrowser, with in-tree DOM, CSS, layout, rendering, and networking. The website reported 15,100+ autonomous commits and a 78.85% pass rate on the full WPT corpus as of 2026-11-11. Neither the homepage nor the README names the harness or model.
-      zh: 项目提供 ZeroWebView 与 ZeroBrowser，DOM、CSS、布局、渲染和网络均在仓库内实现。网站在 2026-11-11 报告超过 15,100 次自主提交，以及全量 WPT 子测试 78.85% 通过率。首页和 README 都没有写出具体 harness 或模型。
+      zh: 项目有 ZeroWebView 和 ZeroBrowser。DOM、CSS、布局、渲染、网络都在仓库里实现。网站在 2026-11-11 写了超过 15,100 次自主提交，全量 WPT 子测试通过率 78.85%。首页和 README 都没写具体 harness 或模型。
     repo_url: "https://github.com/leizongmin/ZeroWeb"
     homepage_url: "https://zeroweb.leizm.com/"
     article_urls: []
@@ -502,7 +502,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: Strong first-party statement that humans do not write the implementation, but the tool and model are undisclosed.
-      zh: 第一方明确声明人类不写实现，但未披露所用工具与模型。
+      zh: 作者自己写明人不写实现，但没说用的是哪个工具、哪个模型。
     verified: author_claimed
     stars: 9
     stars_checked_at: "2026-11-12"
@@ -512,16 +512,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: Do not guess Claude, Cursor, or any other harness for this entry until the authors name one.
-      zh: 在作者点名之前，不要把该项目的 harness 猜测为 Claude、Cursor 或其他工具。
+      zh: 作者没点名之前，不要猜它用的是 Claude、Cursor 还是别的 harness。
 
   - id: forgekernel
     name: ForgeKernel
     summary:
       en: A self-evolving GPU-kernel agent from OpenBMB, with generated CuTe/CUDA kernels released in-tree and a paper reporting wins against expert libraries and other kernel agents.
-      zh: OpenBMB 的自演化 GPU kernel agent。生成的 CuTe/CUDA kernel 随仓库发布；论文报告在多个算子上达到或超过专家库与其他 kernel agent。
+      zh: OpenBMB 的自演化 GPU kernel agent。生成的 CuTe/CUDA kernel 跟仓库一起发布。论文说，在多个算子上达到或超过专家库和其他 kernel agent。
     description:
       en: The agent profiles a reference kernel, writes an architecture-first milestone curriculum, and promotes accepted kernels to the next reference. The README says paper runs used Claude Fable 5.1 as the arch agent and Claude Opus 5 as the coding agent. A Claude Code skill can launch runs. Generated kernels live under kernels/.
-      zh: 该 agent 会剖析参考 kernel，写出以架构为先的里程碑课程，并把被接受的 kernel 提升为下一轮参考。README 称论文实验用 Claude Fable 5.1 做 arch agent、Claude Opus 5 做 coding agent。可用 Claude Code skill 启动运行。生成的 kernel 位于 kernels/ 目录。
+      zh: 这个 agent 会剖析参考 kernel，先按架构写出一串要过的里程碑，再把通过的 kernel 换成下一轮的参考。README 说论文实验里，arch agent 是 Claude Fable 5.1，coding agent 是 Claude Opus 5。可以用 Claude Code skill 把一次运行拉起来。生成的 kernel 在 kernels/ 目录。
     repo_url: "https://github.com/OpenBMB/ForgeKernel"
     homepage_url: null
     article_urls:
@@ -541,7 +541,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: Humans designed the self-evolution loop and released a launch skill. The generated kernels in kernels/ are the agent-produced artifacts catalogued here.
-      zh: 人类设计了自演化循环并发布了启动 skill。此处收录的是 kernels/ 中由 agent 生成的 kernel 工件。
+      zh: 人设计了自演化循环，也发了用来启动的 skill。这里收的是 kernels/ 里 agent 生成的 kernel。
     verified: verified
     stars: 312
     stars_checked_at: "2026-11-12"
@@ -552,16 +552,16 @@ projects:
     first_public_at: "2026-11-03"
     notes:
       en: ForgeKernel is both a harness and a collection of generated kernels. Claude Code is recorded because the project officially supports it as a launch front-end and because the paper runs used Claude models; the core loop is the project's own harness.
-      zh: ForgeKernel 既是 harness，也是生成 kernel 的集合。记录 Claude Code 是因为项目官方支持用它启动，且论文实验使用 Claude 模型；核心循环仍是项目自有 harness。
+      zh: ForgeKernel 既是 harness，也是一批生成出来的 kernel。之所以记下 Claude Code，是因为项目官方支持用它来启动，论文实验也用了 Claude 的模型。核心循环还是项目自己的 harness。
 
   - id: kernelseek
     name: KernelSeek
     summary:
       en: A question-driven CUDA kernel optimization agent that, according to its paper, produced dependency-free FlashAttention forward kernels faster than FA3 and FA4 on the authors' suites.
-      zh: 论文中的问题驱动 CUDA kernel 优化 agent；作者称其写出了不依赖 CUTLASS/CuTe 的 FlashAttention 前向 kernel，并在其测试集上快于 FA3 与 FA4。
+      zh: 论文里的 CUDA kernel 优化 agent，靠提问来驱动。作者说它写出了不依赖 CUTLASS/CuTe 的 FlashAttention 前向 kernel，在他们的测试集上比 FA3 和 FA4 快。
     description:
       en: The paper (arXiv:2611.03517) compares a tool-rich autonomous baseline that plateaued at 0.50× FA3 with KernelSeek reaching 1.13× on the same 26-configuration evaluator, then reports fa3_hopper.cu at 1.16× FA3 (182/182) and fa4_blackwell.cu at 1.46× FA4 on paired scenarios. Sessions used Claude Code and Cursor. The paper says the kernels, harness, question bank, and traces will be released, but no public repository URL was found during this research pass.
-      zh: 论文（arXiv:2611.03517）称，工具丰富的自主基线在相同 26 配置评估器上停滞于 0.50× FA3，而 KernelSeek 达到 1.13×；随后报告 fa3_hopper.cu 相对 FA3 为 1.16×（182/182），fa4_blackwell.cu 在成对场景上相对 FA4 为 1.46×。会话使用 Claude Code 与 Cursor。论文声称将发布 kernel、harness、问题库和 traces，但本轮未找到公开仓库 URL。
+      zh: 论文（arXiv:2611.03517）写：工具很多的自动基线，在同一套 26 个配置的评估器上停在 0.50× FA3，KernelSeek 到了 1.13×。接着 fa3_hopper.cu 相对 FA3 是 1.16×（182/182），fa4_blackwell.cu 在成对场景上相对 FA4 是 1.46×。会话用的是 Claude Code 和 Cursor。论文说会放出 kernel、harness、问题库和 traces，但这轮没找到公开仓库 URL。
     repo_url: null
     homepage_url: "https://arxiv.org/abs/2611.03517"
     article_urls:
@@ -579,7 +579,7 @@ projects:
     human_involvement: steered_agent
     human_involvement_notes:
       en: The paper says the human wrote no kernel code and steered with short questions, directives, and a stop-hook goal. Sixteen archived sessions contained 162 human messages and 11,532 tool calls.
-      zh: 论文称人类没有编写 kernel 代码，而是用简短问题、指令和 stop hook 目标来引导。归档的 16 个会话包含 162 条人类消息和 11,532 次工具调用。
+      zh: 论文说人没写 kernel 代码，是用短问题、指令和 stop hook 的目标来带。存档的 16 个会话里有 162 条人的消息、11,532 次工具调用。
     verified: paper_claimed_release_not_found
     stars: null
     stars_checked_at: "2026-11-12"
@@ -589,16 +589,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: Benchmark numbers are the paper's, not independently reproduced here. A public GitHub URL was not found on arXiv or the Hugging Face paper page.
-      zh: 基准数字来自论文，本目录未独立复现。在 arXiv 与 Hugging Face Papers 页面上未找到公开 GitHub URL。
+      zh: 这些数字是论文里的，这里没有自己复现。arXiv 和 Hugging Face Papers 页面上都没找到公开的 GitHub 地址。
 
   - id: machina
     name: Machina
     summary:
       en: A modular RISC-V full-system emulator in Rust, presented as a human-and-agent collaboration using Claude and Codex.
-      zh: 用 Rust 编写的模块化 RISC-V 全系统模拟器，作者将其作为人类与 Claude、Codex agent 协作开发的案例。
+      zh: 用 Rust 写的模块化 RISC-V 全系统模拟器。作者把它当成人和 Claude、Codex 的 agent 一起做的例子。
     description:
       en: Machina reimplements core QEMU ideas (JIT binary translation, device models, full-system emulation) for RISC-V, including Sv39 MMU, VirtIO block, and QEMU difftest. The canonical clone URL in the README is gevico/machina.
-      zh: Machina 在 RISC-V 上重实现了 QEMU 的核心思路（JIT 二进制翻译、设备模型、全系统模拟），包括 Sv39 MMU、VirtIO 块设备和与 QEMU 的 difftest。README 中的规范 clone URL 是 gevico/machina。
+      zh: Machina 在 RISC-V 上重做了 QEMU 的几件核心事：JIT 二进制翻译、设备模型、全系统模拟，包括 Sv39 MMU、VirtIO 块设备，以及和 QEMU 的 difftest。README 里写的正式 clone 地址是 gevico/machina。
     repo_url: "https://github.com/gevico/machina"
     homepage_url: null
     article_urls: []
@@ -614,7 +614,7 @@ projects:
     human_involvement: pair
     human_involvement_notes:
       en: Explicitly framed as collaborative and educational, not as an unattended autonomous run. The README also mentions a Humanize / RLCR (Round, Loop, Codex Review) workflow.
-      zh: 明确写成协作与教学案例，而不是无人值守的自主运行。README 还提到 Humanize / RLCR（Round、Loop、Codex Review）工作流。
+      zh: README 把它写成协作和教学的例子，不是放着自动跑、没人看。文中还提到 Humanize / RLCR（Round、Loop、Codex Review）这套流程。
     verified: author_claimed
     stars: 38
     stars_checked_at: "2026-11-12"
@@ -624,16 +624,16 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: mvanhorn/machina also returned HTTP 200 with similar content but 0 stars in the API snapshot; this catalog uses gevico/machina, the clone URL printed in the README. Harness is recorded as claude-code plus codex because the README names Claude and Codex; the exact Claude front-end is not spelled out.
-      zh: mvanhorn/machina 同样返回 200 且内容类似，但 API 快照为 0 stars；本目录采用 README 中的 clone URL gevico/machina。因 README 写的是 Claude 与 Codex，harness 记为 claude-code 与 codex，但未写明 Claude 的具体前端。
+      zh: mvanhorn/machina 也返回 200，内容差不多，但 API 快照是 0 star。这里用的是 README 里的 clone 地址 gevico/machina。README 写的是 Claude 和 Codex，所以 harness 记成 claude-code 和 codex，但没写清 Claude 用的是哪个前端。
 
   - id: fable-os
     name: Claude Fable 5.2 OS experiment
     summary:
       en: An Anthropic-announced experiment in which Claude Fable 5.2 coordinated more than 1,000 subagents over eight days to build a prototype operating system from an empty folder.
-      zh: Anthropic 公布的实验：Claude Fable 5.2 从空目录出发，协调超过 1000 个 subagent，用八天时间做出一套原型操作系统。
+      zh: Anthropic 公布的实验。Claude Fable 5.2 从空目录开始，协调 1000 多个 subagent，八天做出一套原型操作系统。
     description:
       en: The official Fable 5.2 announcement says the result boots on a laptop and includes a core that runs the machine, drivers for disk, keyboard, and network, permanent file storage, windows, a login screen, an installer, and built-in Claude functionality. No official source repository was found. A similarly named third-party repo was not treated as the same artifact.
-      zh: 官方 Fable 5.2 介绍页称，该系统可在笔记本上引导，并包含运行机器的核心、磁盘/键盘/网络驱动、持久文件存储、窗口、登录界面、安装器以及内置 Claude 功能。未找到官方源码仓库。名称相近的第三方仓库不被当作同一产物。
+      zh: 官方 Fable 5.2 介绍页说，这套系统能在笔记本上引导，里面有负责把机器跑起来的核心、磁盘、键盘和网络的驱动、能一直留着的文件存储、窗口、登录界面、安装器，还有内置的 Claude。没找到官方源码仓库。名字相近的第三方仓库，没有当成同一个东西。
     repo_url: null
     homepage_url: "https://www.anthropic.com/claude-fable-and-mythos-5-2"
     article_urls:
@@ -650,7 +650,7 @@ projects:
     human_involvement: autonomous_multi_agent
     human_involvement_notes:
       en: The announcement describes an engineer giving the task and the model coordinating subagents. The precise human-in-the-loop frequency during those eight days is not detailed beyond the initial assignment.
-      zh: 公告描述由一名工程师提出任务、模型协调 subagent。这八天中人类介入的频率，除初始布置外没有更细的说明。
+      zh: 公告说，一名工程师把任务交出去，模型去协调 subagent。这八天里人插手有多勤，除了一开始交任务，没有更细的说明。
     verified: official_claim_no_source
     stars: null
     stars_checked_at: "2026-11-12"
@@ -660,4 +660,4 @@ projects:
     listed_at: "2026-11-12"
     notes:
       en: The front-end harness is not named (it may be an internal Anthropic setup rather than public Claude Code). Recorded as custom. Media recaps were not used as primary evidence.
-      zh: 未写出具体前端 harness（可能是 Anthropic 内部环境而非公开的 Claude Code），故记为 custom。媒体转述不用作第一证据。
+      zh: 没写具体的前端 harness，可能是 Anthropic 内部环境，不是公开的 Claude Code，所以记成 custom。媒体的复述没有拿来当第一手证据。

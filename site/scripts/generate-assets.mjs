@@ -58,6 +58,6 @@ const preview = `<?xml version="1.0" encoding="UTF-8"?>
   <text x="430" y="455" font-family="IBM Plex Sans" font-weight="600" font-size="112" letter-spacing="-3.5" fill="#efece4">AgentBuilt</text>
   <rect x="430" y="490" width="88" height="4" fill="#d4893a"/>
   <text x="430" y="555" font-family="IBM Plex Sans" font-weight="400" font-size="32" fill="#9a968c">Systems projects written with coding agents.</text>
-  <text x="430" y="605" font-family="IBM Plex Sans" font-weight="400" font-size="26" fill="#6eb3ae">用编程 agent 写的系统软件。</text>
+  <text x="430" y="605" font-family="IBM Plex Sans" font-weight="400" font-size="26" fill="#6eb3ae">编程 agent 写出来的系统软件。</text>
 </svg>`;
 render(preview, path.join(repo, "logo-preview.png"), 1600);
