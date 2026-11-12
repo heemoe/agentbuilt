@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "AgentBuilt",
-  origin: "https://agentbuilt.pages.dev",
+  origin: "https://whataibuilt.com",
   base: "/",
   repo: "https://github.com/heemoe/agentbuilt",
   defaultLocale: "en" as const,
