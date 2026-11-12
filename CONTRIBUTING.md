@@ -88,6 +88,6 @@ Nothing in the repo refreshes `stars` or re-checks URLs yet. If you add a star c
 
 ## Code and site changes
 
-UI strings are in `site/src/i18n/en.ts` and `site/src/i18n/zh.ts`. The site name, origin, base path, and repository URL are in `site/src/site.config.ts`.
+UI strings are in `site/src/i18n/en.ts` and `site/src/i18n/zh.ts`. The site name, origin, base path, and repository URL are in `site/src/site.config.ts`. The public site is [https://whataibuilt.com](https://whataibuilt.com).
 
 Keep the site static. Filters and the compare page should work without a backend.

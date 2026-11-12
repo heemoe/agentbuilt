@@ -2,7 +2,7 @@
 
 > 调研日期：2026-11-12（Asia/Shanghai）。所有项目、链接与指标均来自当时可公开访问的页面、仓库或论文；未编造任何条目。GitHub star 数为同日通过 GitHub API 取得的快照，会随时间变化。
 >
-> 本仓库对应的站点已定名为 **AgentBuilt**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，部署在 Cloudflare Pages，站点 URL 为 `https://agentbuilt.pages.dev`（不用自定义域，`base` 为根路径 `/`）。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
+> 本仓库对应的站点已定名为 **AgentBuilt**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，部署在 Cloudflare Pages，规范站点 URL 为 `https://whataibuilt.com`（`base` 为根路径 `/`）。`www.whataibuilt.com` 与 `agentbuilt.pages.dev` 会 301 到该主机的同一路径；`*.agentbuilt.pages.dev` 预览域名不跳转。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
 
 ## 1. 结论（先看这里）
 
@@ -220,7 +220,7 @@
 
 **不优先选 Next.js 的原因**：也能做，但对当前信息架构偏重；需要额外处理 SSG/i18n/sitemap。若未来要做账户体系或复杂交互，可以再评估迁移或在同一 monorepo 加应用。
 
-部署已定为 **Cloudflare Pages**，不用自定义域。站点 URL 为 `https://agentbuilt.pages.dev`，`base` 为 `/`。构建设置：根目录 `site`，命令 `npm run build`，输出 `dist`；详见 `site/wrangler.toml` 与 README。
+部署已定为 **Cloudflare Pages**，规范站点 URL 为 `https://whataibuilt.com`，`base` 为 `/`。`www.whataibuilt.com` 与 `agentbuilt.pages.dev` 301 到该主机；预览子域不跳转。构建设置：根目录 `site`，命令 `npm run build`，输出 `dist`；详见 `site/wrangler.toml` 与 README。
 
 ---
 
@@ -262,13 +262,13 @@ npm run preview  # 预览构建结果
 
 ## 10. 需要用户拍板的决策点
 
-1. **正式名称与域名**：**名称已定为 AgentBuilt**，仓库 `heemoe/agentbuilt`。**部署已定为 Cloudflare Pages，不用自定义域**，站点 URL 为 `https://agentbuilt.pages.dev`，`base` 为 `/`。
+1. **正式名称与域名**：**名称已定为 AgentBuilt**，仓库 `heemoe/agentbuilt`。**部署已定为 Cloudflare Pages**，规范站点 URL 为 `https://whataibuilt.com`，`base` 为 `/`。
 2. **是否收录「官方实验但无源码」的条目**（Antigravity OS、Fable OS 等）：**已决定保留收录**。列表卡片与详情页统一显示「未验证 / Unverified」徽章；首页可按验证状态筛选（已核实工件 / 作者声明 / Commit 归因 / 未验证）。详情侧栏与对比表仍保留精确分级（如 `official_claim_no_source`）。同类无公开工件的 `paper_claimed_release_not_found`（如 KernelSeek）同样使用该徽章，并归入「未验证」筛选项。
 3. **ZeroWeb、MiniSQLite 这类「第一方声明不完整」的条目如何展示**：ZeroWeb 未写 harness/模型；MiniSQLite 官方 README 不谈 agent，声明在公司社交媒体。是否要求「仓库内必须自述」才能标 `verified`。
 4. **Stars 更新策略**：构建时拉取、每日 Action 回写，还是只保留提交时的快照。
 5. **是否接受二手证据**（BitsExplorer trailer、媒体报道）作为主要依据。本轮仅把 trailer 作为 Rabbit 的补充，不单独靠媒体收项目。
 6. **语言范围**：现在只有 en + zh。是否需要繁体或其他语言，只是加字典，但要有人维护译文。
-7. **部署目标**：**已定为 Cloudflare Pages**（`https://agentbuilt.pages.dev`），不用自定义域。
+7. **部署目标**：**已定为 Cloudflare Pages**，规范 URL 为 `https://whataibuilt.com`。
 
 ---
 

@@ -8,7 +8,7 @@ The site name, domain, and repository URL are in [`site/src/site.config.ts`](sit
 
 - Name: **AgentBuilt**
 - Repo: [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)
-- Site URL: [https://agentbuilt.pages.dev](https://agentbuilt.pages.dev) (Cloudflare Pages, no custom domain)
+- Site URL: [https://whataibuilt.com](https://whataibuilt.com) (Cloudflare Pages custom domain)
 
 ## Documents
 
@@ -35,6 +35,8 @@ npm run check:data  # validate the YAML catalog
 ```
 
 The site is served from the root path. English is the default locale (no prefix). Simplified Chinese lives under `/zh/`. Local preview: `http://localhost:4321/` and `http://localhost:4321/zh/`.
+
+Production canonical host is `https://whataibuilt.com`. `site/functions/_middleware.ts` returns a 301 to the same path and query on that host when the `Host` header is exactly `www.whataibuilt.com` or `agentbuilt.pages.dev`. Preview hostnames such as `feat.agentbuilt.pages.dev` and `<hash>.agentbuilt.pages.dev` are not redirected.
 
 ## Deploy (Cloudflare Pages)
 
