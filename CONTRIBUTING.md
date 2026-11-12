@@ -1,6 +1,6 @@
-# Contributing to AgentBuilt
+# Contributing to What AI Built
 
-AgentBuilt lists systems software that an LLM or a coding-agent harness wrote most of: kernels, compilers, databases, emulators, browser engines, GPU/TPU kernels, and similar projects.
+What AI Built is a catalog of systems software that an LLM or a coding-agent harness wrote most of: kernels, compilers, databases, emulators, browser engines, GPU/TPU kernels, and similar projects.
 
 English is the default. Simplified Chinese summaries are welcome. A pull request can merge without one.
 

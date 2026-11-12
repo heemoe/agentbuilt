@@ -1,14 +1,14 @@
-# AgentBuilt 调研与方案（初版）
+# What AI Built 调研与方案（初版）
 
 > 调研日期：2026-11-12（Asia/Shanghai）。所有项目、链接与指标均来自当时可公开访问的页面、仓库或论文；未编造任何条目。GitHub star 数为同日通过 GitHub API 取得的快照，会随时间变化。
 >
-> 本仓库对应的站点已定名为 **AgentBuilt**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，部署在 Cloudflare Pages，规范站点 URL 为 `https://whataibuilt.com`（`base` 为根路径 `/`）。`www.whataibuilt.com` 与 `agentbuilt.pages.dev` 会 301 到该主机的同一路径；`*.agentbuilt.pages.dev` 预览域名不跳转。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
+> 本仓库对应的站点已定名为 **What AI Built**，代码仓库为 [https://github.com/heemoe/agentbuilt](https://github.com/heemoe/agentbuilt)，部署在 Cloudflare Pages，规范站点 URL 为 `https://whataibuilt.com`（`base` 为根路径 `/`）。`www.whataibuilt.com` 与 `agentbuilt.pages.dev` 会 301 到该主机的同一路径；`*.agentbuilt.pages.dev` 预览域名不跳转。站点名、域名与仓库地址集中在 `site/src/site.config.ts`。
 
 ## 1. 结论（先看这里）
 
 现有「vibe coding / AI 产物」目录几乎都在收录**已上线的消费级应用、游戏和 SaaS**，按品类或工具浏览，用营收、投票或链接存活做排序。它们很少覆盖 kernel、编译器、数据库引擎、模拟器、浏览器引擎、GPU/TPU kernel 这类中高难度系统软件，也很少把 **harness 与底层模型分开建模**，开源协作（PR 提交 + schema 校验 + 证据链接）更不是主流。
 
-**AgentBuilt 的定位**应明确互补，而不是再做一个 MissumAI：
+**What AI Built 的定位**应明确互补，而不是再做一个 MissumAI：
 
 - 收录对象：主要由 LLM / Agent harness 产出的、可公开核查的系统级或高难度项目；
 - 分类轴：harness（Claude Code、Codex、Cursor、OpenCode、Gemini CLI、Antigravity、DeepSeek Harness 等）**和**底层模型，二者分开；
@@ -87,9 +87,9 @@
 | awesome-vibe-coding | [https://github.com/awesome-vibe-coding/awesome-vibe-coding](https://github.com/awesome-vibe-coding/awesome-vibe-coding) | 收的是 **工具和资源**（Bolt、Lovable、v0 等），不是「agent 写出的项目」。 |
 | awesome-ai-built-games | [https://github.com/lappemic/awesome-ai-built-games](https://github.com/lappemic/awesome-ai-built-games) | 可玩的 AI 编写游戏，按类型分组，部分标注工具与引擎。 |
 | shipped-with-ai / vibeking.fun | [https://github.com/0xvibly/awesome-vibe-coded-apps](https://github.com/0xvibly/awesome-vibe-coded-apps) | 从 vibeking.fun API 每日生成的快照，社区 upvote，体量大、字段浅。 |
-| BitsExplorer（OpenCode） | [https://bitsexplorer.com/built-with/opencode](https://bitsexplorer.com/built-with/opencode) | 用 OpenCode 写入 commit 的 `Co-Authored-By: opencode` trailer 做证据，而不是自评徽章。这对 AgentBuilt 的可验证性设计有参考价值。 |
+| BitsExplorer（OpenCode） | [https://bitsexplorer.com/built-with/opencode](https://bitsexplorer.com/built-with/opencode) | 用 OpenCode 写入 commit 的 `Co-Authored-By: opencode` trailer 做证据，而不是自评徽章。这对 What AI Built 的可验证性设计有参考价值。 |
 
-**共同缺口**：消费级产品多、系统软件少；harness 与模型不分；开源 PR 工作流少；证据分级弱。这正是 AgentBuilt 要补的位置。
+**共同缺口**：消费级产品多、系统软件少；harness 与模型不分；开源 PR 工作流少；证据分级弱。这正是 What AI Built 要补的位置。
 
 ---
 
@@ -262,7 +262,7 @@ npm run preview  # 预览构建结果
 
 ## 10. 需要用户拍板的决策点
 
-1. **正式名称与域名**：**名称已定为 AgentBuilt**，仓库 `heemoe/agentbuilt`。**部署已定为 Cloudflare Pages**，规范站点 URL 为 `https://whataibuilt.com`，`base` 为 `/`。
+1. **正式名称与域名**：**名称已定为 What AI Built**，仓库 `heemoe/agentbuilt`。**部署已定为 Cloudflare Pages**，规范站点 URL 为 `https://whataibuilt.com`，`base` 为 `/`。
 2. **是否收录「官方实验但无源码」的条目**（Antigravity OS、Fable OS 等）：**已决定保留收录**。列表卡片与详情页统一显示「未验证 / Unverified」徽章；首页可按验证状态筛选（已核实工件 / 作者声明 / Commit 归因 / 未验证）。详情侧栏与对比表仍保留精确分级（如 `official_claim_no_source`）。同类无公开工件的 `paper_claimed_release_not_found`（如 KernelSeek）同样使用该徽章，并归入「未验证」筛选项。
 3. **ZeroWeb、MiniSQLite 这类「第一方声明不完整」的条目如何展示**：ZeroWeb 未写 harness/模型；MiniSQLite 官方 README 不谈 agent，声明在公司社交媒体。是否要求「仓库内必须自述」才能标 `verified`。
 4. **Stars 更新策略**：构建时拉取、每日 Action 回写，还是只保留提交时的快照。

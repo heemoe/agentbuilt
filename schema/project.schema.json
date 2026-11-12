@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://whataibuilt.com/schema/project.schema.json",
-  "title": "AgentBuilt catalog file",
+  "title": "What AI Built catalog file",
   "description": "A YAML/JSON catalog of systems software projects primarily produced by LLM/agent harnesses.",
   "type": "object",
   "required": ["catalog_version", "stars_checked_at", "projects"],

@@ -11,8 +11,8 @@
   --ink: #efece4;
   --muted: #9a968c;
   --line: rgba(239, 236, 228, 0.12);
-  --copper: #d4893a;
-  --copper-dim: #8a5a24;
+  --copper: #a78bfa;
+  --copper-dim: #6d5cae;
   --teal: #6eb3ae;
   --danger: #d9796a;
   --ok: #8fb56a;
@@ -29,7 +29,7 @@ html, body { margin: 0; padding: 0; }
 body {
   font-family: var(--sans);
   background:
-    radial-gradient(1200px 500px at 10% -10%, rgba(212, 137, 58, 0.12), transparent 50%),
+    radial-gradient(1200px 500px at 10% -10%, rgba(167, 139, 250, 0.14), transparent 50%),
     radial-gradient(900px 400px at 100% 0%, rgba(110, 179, 174, 0.08), transparent 45%),
     var(--bg);
   color: var(--ink);
@@ -71,6 +71,7 @@ code, .mono { font-family: var(--mono); font-size: 0.92em; }
   font-weight: 600;
   letter-spacing: -0.03em;
   font-size: 1.05rem;
+  white-space: nowrap;
 }
 .brand svg { display: block; }
 .nav {
@@ -177,7 +178,7 @@ code, .mono { font-family: var(--mono); font-size: 0.92em; }
   min-height: 210px;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
-.card:hover { border-color: rgba(212, 137, 58, 0.5); transform: translateY(-1px); color: inherit; }
+.card:hover { border-color: rgba(167, 139, 250, 0.5); transform: translateY(-1px); color: inherit; }
 .card h2 { font-size: 1.12rem; letter-spacing: -0.03em; margin: 0; }
 .card p { margin: 0; color: var(--muted); font-size: 0.94rem; flex: 1; }
 .meta-row, .badges { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -189,9 +190,9 @@ code, .mono { font-family: var(--mono); font-size: 0.92em; }
   padding: 2px 8px;
   color: var(--muted);
 }
-.badge.copper { color: var(--copper); border-color: rgba(212, 137, 58, 0.4); }
+.badge.copper { color: var(--copper); border-color: rgba(167, 139, 250, 0.45); }
 .badge.teal { color: var(--teal); border-color: rgba(110, 179, 174, 0.4); }
-.badge.warn { color: #e0b070; border-color: rgba(224, 176, 112, 0.55); background: rgba(212, 137, 58, 0.12); }
+.badge.warn { color: #e0b070; border-color: rgba(224, 176, 112, 0.55); background: rgba(224, 176, 112, 0.12); }
 .stars { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
 
 .detail { padding: 40px 0 80px; }
