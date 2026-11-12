@@ -12,8 +12,6 @@ export const en = {
   heroTitle: "Systems projects written with coding agents.",
   heroLead:
     "Kernels, compilers, operating systems, databases, emulators, browser engines, GPU kernels, and TPU kernels. Each entry names the harness and the model, and links the README, post, or paper that says an agent wrote it.",
-  heroNote:
-    "English is the default. Chinese pages are under /zh/. If a project has no Chinese summary, the English one is shown.",
   filterHarness: "Harness",
   filterModel: "Model",
   filterCategory: "Category",

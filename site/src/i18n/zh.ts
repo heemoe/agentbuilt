@@ -14,7 +14,6 @@ export const zh: Record<keyof typeof en, string> = {
   heroTitle: "用编程 agent 写的系统软件。",
   heroLead:
     "内核、编译器、操作系统、数据库、模拟器、浏览器引擎，还有 GPU kernel 和 TPU kernel。每条记下 harness 和模型，并链到说明是 agent 写的 README、文章或论文。",
-  heroNote: "默认是英文。中文在 /zh/。项目没有中文简介时，显示英文。",
   filterHarness: "Harness",
   filterModel: "模型",
   filterCategory: "类别",
