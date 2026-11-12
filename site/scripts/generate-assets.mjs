@@ -45,7 +45,7 @@ const og = `<?xml version="1.0" encoding="UTF-8"?>
   <g transform="translate(96,215) scale(2.6)">${inner}</g>
   <text x="290" y="300" font-family="IBM Plex Sans" font-weight="600" font-size="86" letter-spacing="-2.5" fill="#efece4">AgentBuilt</text>
   <rect x="290" y="332" width="72" height="3" fill="#d4893a"/>
-  <text x="290" y="390" font-family="IBM Plex Sans" font-weight="400" font-size="28" fill="#9a968c">Systems software built by AI agents.</text>
+  <text x="290" y="390" font-family="IBM Plex Sans" font-weight="400" font-size="28" fill="#9a968c">Systems projects written with coding agents.</text>
 </svg>`;
 render(og, path.join(site, "public/og.png"), 1200);
 
@@ -57,7 +57,7 @@ const preview = `<?xml version="1.0" encoding="UTF-8"?>
   <g transform="translate(180,330) scale(3.4)">${inner}</g>
   <text x="430" y="455" font-family="IBM Plex Sans" font-weight="600" font-size="112" letter-spacing="-3.5" fill="#efece4">AgentBuilt</text>
   <rect x="430" y="490" width="88" height="4" fill="#d4893a"/>
-  <text x="430" y="555" font-family="IBM Plex Sans" font-weight="400" font-size="32" fill="#9a968c">Systems software built by AI agents.</text>
-  <text x="430" y="605" font-family="IBM Plex Sans" font-weight="400" font-size="26" fill="#6eb3ae">由 AI Agent 构建的系统软件。</text>
+  <text x="430" y="555" font-family="IBM Plex Sans" font-weight="400" font-size="32" fill="#9a968c">Systems projects written with coding agents.</text>
+  <text x="430" y="605" font-family="IBM Plex Sans" font-weight="400" font-size="26" fill="#6eb3ae">用编程 agent 写的系统软件。</text>
 </svg>`;
 render(preview, path.join(repo, "logo-preview.png"), 1600);
