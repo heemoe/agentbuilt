@@ -661,3 +661,361 @@ projects:
     notes:
       en: The front-end harness is not named (it may be an internal Anthropic setup rather than public Claude Code). Recorded as custom. Media recaps were not used as primary evidence.
       zh: 没写具体的前端 harness，可能是 Anthropic 内部环境，不是公开的 Claude Code，所以记成 custom。媒体的复述没有拿来当第一手证据。
+
+  - id: aws-emulator
+    name: AWS Emulator
+    summary:
+      en: A local emulator of the AWS APIs in Rust that AWS says is written and maintained entirely by autonomous AI agents, with the source published on GitHub under CC0.
+      zh: 用 Rust 写的本地 AWS API 模拟器。AWS 说代码全部由自主 AI agent 编写和维护，源码以 CC0 发布在 GitHub。
+    description:
+      en: AWS announced AWS Emulator as generally available on 11 November 2026. It serves the AWS APIs that have a public API model over a local HTTPS endpoint. Amazon's write-up says three teams of agents build it (one maintains fidelity tests checked against real AWS, one finds divergences and files issues, one fixes issues behind an agent review gate), that thousands of issues are fixed per day, and that the team has not written or reviewed any of the code. The first weekend prototype was made with Kiro; the production pipeline runs on Amazon Bedrock AgentCore Runtime, AWS CodePipeline, and AWS CodeCommit. The fidelity tests are public in aws/aws-emulator-evaluation-suite.
+      zh: AWS 在 2026-11-11 宣布 AWS Emulator 正式可用。凡是有公开 API 模型的 AWS 服务，它都在本机 HTTPS 端点上模拟。Amazon 的文章说由三组 agent 来做：一组维护对照真实 AWS 校验过的 fidelity 测试，一组找出不一致并开 issue，一组修 issue，修完要过 agent 审查关卡；每天修掉几千个 issue，团队自己没写也没审过任何代码。最早的周末原型是用 Kiro 做的，正式流水线跑在 Amazon Bedrock AgentCore Runtime、AWS CodePipeline 和 AWS CodeCommit 上。fidelity 测试公开在 aws/aws-emulator-evaluation-suite。
+    repo_url: "https://github.com/aws/aws-emulator"
+    homepage_url: "https://docs.aws.amazon.com/emulator/latest/userguide/what-is-service.html"
+    article_urls:
+      - "https://www.aboutamazon.com/news/aws/how-autonomous-ai-agents-built-aws-emulator"
+      - "https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/"
+      - "https://github.com/aws/aws-emulator-evaluation-suite"
+    harnesses: [custom]
+    models: [unknown]
+    categories: [emulator]
+    difficulty: high
+    evidence:
+      - type: official_blog
+        url: "https://www.aboutamazon.com/news/aws/how-autonomous-ai-agents-built-aws-emulator"
+        quote: "The emulator was written entirely by autonomous agents. Our team hasn’t written or reviewed any of the code."
+        accessed: "2026-11-23"
+      - type: official_blog
+        url: "https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/"
+        quote: "AWS Emulator is built and maintained by agents from the AWS API models using Amazon Bedrock AgentCore Runtime Instances, AWS CodePipeline, and AWS CodeCommit, so it stays current with AWS as those models change."
+        accessed: "2026-11-23"
+      - type: official_repo
+        url: "https://github.com/aws/aws-emulator"
+        quote: "We don't accept pull requests: AI agents keep the emulator up to date with AWS, with regular updates."
+        accessed: "2026-11-23"
+    human_involvement: autonomous_multi_agent
+    human_involvement_notes:
+      en: Humans built the agent pipeline, guardrails, and merge gate. Amazon says no human writes or reviews the emulator code itself; agents also review each change for standards, security, and fidelity regressions.
+      zh: 人搭了 agent 流水线、护栏和合并关卡。Amazon 说模拟器代码本身没有人写、也没有人审；每个改动由 agent 检查规范、安全和 fidelity 回退。
+    verified: verified
+    stars: 9907
+    stars_checked_at: "2026-11-23"
+    license: CC0-1.0
+    languages: [Rust]
+    status: active
+    listed_at: "2026-11-23"
+    first_public_at: "2026-11-11"
+    notes:
+      en: The harness is AWS's own multi-agent pipeline; Kiro is only named for the first weekend prototype. No model is named in the sources checked. This emulates cloud service APIs, not a CPU or hardware. Code under vendor/ is Apache-2.0 per the README.
+      zh: harness 是 AWS 自己的多 agent 流水线，Kiro 只在讲最早的周末原型时提到。核对过的材料里没写模型名。它模拟的是云服务 API，不是 CPU 或硬件。README 说 vendor/ 下的代码是 Apache-2.0。
+
+  - id: serc
+    name: Serc
+    summary:
+      en: An experimental CPython bytecode compiler in Rust whose README says all code changes were authored by GPT in Codex, with byte-identical output to CPython on a large real-world corpus.
+      zh: 实验性的 CPython 字节码编译器，用 Rust 写。README 说所有代码改动都是 Codex 里的 GPT 写的。在大量真实代码上，输出和 CPython 逐字节一致。
+    description:
+      en: Serc compiles Python source to .pyc files for CPython 3.12 through 3.15 at optimization levels 0 to 2. The README reports byte-for-byte identical output to CPython on Django, Airflow, Transformers, and other code, and project compilation about 3-4x faster than compileall. It is installable from crates.io as serc-cli. The README warns that Serc may still emit incorrect bytecode in some cases.
+      zh: Serc 把 Python 源码编译成 .pyc，支持 CPython 3.12 到 3.15、优化级别 0 到 2。README 说在 Django、Airflow、Transformers 等代码上，输出和 CPython 逐字节一致，整项目编译比 compileall 快 3 到 4 倍左右。可以从 crates.io 装 serc-cli。README 也提醒，有些情况下它还可能生成错误的字节码。
+    repo_url: "https://github.com/astral-experiments/serc"
+    homepage_url: null
+    article_urls:
+      - "https://news.ycombinator.com/item?id=50435502"
+    harnesses: [codex]
+    models: [unknown]
+    categories: [compiler]
+    difficulty: high
+    evidence:
+      - type: author_readme
+        url: "https://github.com/astral-experiments/serc"
+        quote: "This README is human-edited, but all code changes, PR summaries, and additional documentation were authored entirely by GPT in Codex."
+        accessed: "2026-11-23"
+      - type: benchmark
+        url: "https://github.com/astral-experiments/serc"
+        quote: "Serc produces byte-for-byte identical output (as compared to CPython) on an extensive corpus of real-world Python code"
+        accessed: "2026-11-23"
+    human_involvement: unknown
+    human_involvement_notes:
+      en: The README says the README itself is human-edited and everything else was authored by GPT in Codex. How the human directed the work is not described.
+      zh: README 说 README 本身经过人工编辑，其余都是 Codex 里的 GPT 写的。人具体怎么指导，没有写。
+    verified: author_claimed
+    stars: 127
+    stars_checked_at: "2026-11-23"
+    license: Apache-2.0
+    languages: [Rust]
+    status: research
+    listed_at: "2026-11-23"
+    notes:
+      en: The README says only "GPT", so the model version is unknown. Recent commit messages carry no agent trailers.
+      zh: README 只写了 “GPT”，具体模型版本不知道。近期 commit 里没有 agent 的 trailer。
+
+  - id: swb
+    name: swb
+    summary:
+      en: An experimental web browser written from scratch in Rust, with its own CSS, layout, painting, DOM, and JavaScript engine, where Claude writes and maintains all of the code.
+      zh: 从零用 Rust 写的实验性浏览器。CSS、布局、绘制、DOM 和 JavaScript 引擎都在仓库里自己实现，所有代码由 Claude 编写和维护。
+    description:
+      en: swb uses general-purpose libraries for HTTP, TLS, HTML tokenizing, image and font decoding, shaping, and rasterization, but the ground rules forbid existing browser engines and JavaScript engines. CSS, style, layout, painting, page loading, the JavaScript engine, the DOM and web APIs, and the UI are written in the repository. CLAUDE.md describes an Opus orchestrator that starts typed sub-agents from .claude/agents/ (Opus or Sonnet), with a clean-context reviewer before each commit and Playwright/Chromium used as the layout reference.
+      zh: swb 的 HTTP、TLS、HTML 分词、图片和字体解码、字形排版、光栅化用的是通用库，但规则写明不许用现成的浏览器引擎和 JavaScript 引擎。CSS、样式、布局、绘制、页面加载、JavaScript 引擎、DOM 和 Web API、界面都在仓库里自己写。CLAUDE.md 写的是：主 agent 跑在 Opus 上，按 .claude/agents/ 里的类型启动子 agent（Opus 或 Sonnet），每次提交前由一个干净上下文的 reviewer 审查，布局拿 Playwright/Chromium 做参照。
+    repo_url: "https://github.com/senko/swb"
+    homepage_url: null
+    article_urls:
+      - "https://news.ycombinator.com/item?id=50576386"
+    harnesses: [claude-code]
+    models: [unknown]
+    categories: [browser-engine, js-engine]
+    difficulty: very-high
+    evidence:
+      - type: author_readme
+        url: "https://github.com/senko/swb"
+        quote: "An AI agent (Claude) designs, writes and maintains all of the code. The project owner sets the goals and checks the results."
+        accessed: "2026-11-23"
+      - type: author_readme
+        url: "https://github.com/senko/swb/blob/main/docs/ground-rules.md"
+        quote: "The owner does not read or write code. Claude (the AI agent) writes all code, designs the architecture, and maintains the project over time."
+        accessed: "2026-11-23"
+    human_involvement: steered_agent
+    human_involvement_notes:
+      en: The owner sets goals and target pages and checks results from time to time; the owner does not read or write code.
+      zh: 项目主人定目标和要支持的网页，不定期检查结果，自己不读也不写代码。
+    verified: author_claimed
+    stars: 4
+    stars_checked_at: "2026-11-23"
+    license: MIT
+    languages: [Rust]
+    status: active
+    listed_at: "2026-11-23"
+    notes:
+      en: Claude Code is recorded because the repository uses CLAUDE.md and Claude Code sub-agent definitions in .claude/agents/. CLAUDE.md names Opus and Sonnet without versions, so the model is left as unknown.
+      zh: 记成 Claude Code，是因为仓库用了 CLAUDE.md 和 .claude/agents/ 里的子 agent 定义。CLAUDE.md 只写了 Opus 和 Sonnet，没写版本，所以模型记为未知。
+
+  - id: neversharp
+    name: NeverSharp
+    summary:
+      en: A C# port of the TypeScript 6.0.3 compiler (scanner, parser, binder, checker, emitter), written by Claude agents and benchmarked against typescript-go and tsrs under a pre-registered protocol.
+      zh: TypeScript 6.0.3 编译器的 C# 移植（扫描、解析、绑定、类型检查、输出），由 Claude agent 编写，按预注册方案和 typescript-go、tsrs 做了性能对比。
+    description:
+      en: NeverSharp asks whether a C# port of tsc can match typescript-go. The report says a straight port parses about 6x slower than Go, while the optimized NativeAOT build beats typescript-go 7.0.2 on parsing, type checking, and emit after tuning on the benchmark corpus, and is still about twice as slow as the Rust port tsrs. The project was closed on 2026-11-07 as a research artifact with no end-user CLI.
+      zh: NeverSharp 想回答一个问题：tsc 移植到 C# 能不能赶上 typescript-go。报告说，照搬的移植解析速度大约慢 Go 6 倍；在基准语料上调优过的 NativeAOT 版本，解析、类型检查和输出都快过 typescript-go 7.0.2，但还是比 Rust 移植 tsrs 慢一倍左右。项目在 2026-11-07 结束，是研究产物，没有面向用户的命令行工具。
+    repo_url: "https://github.com/AndreKfm/NeverSharp"
+    homepage_url: null
+    article_urls:
+      - "https://github.com/AndreKfm/NeverSharp/blob/main/docs/report-v1.md"
+    harnesses: [unknown]
+    models: [claude-opus-5.5, claude-sonnet-5.5]
+    categories: [compiler]
+    difficulty: very-high
+    evidence:
+      - type: author_readme
+        url: "https://github.com/AndreKfm/NeverSharp"
+        quote: "The code was written by AI agents (Claude Opus 5.5 and Sonnet 5.5), orchestrated by Claude Opus 5.5, under the author's direction and decisions."
+        accessed: "2026-11-23"
+      - type: commit_trailer
+        url: "https://github.com/AndreKfm/NeverSharp/commits/main"
+        quote: "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+        accessed: "2026-11-23"
+    human_involvement: steered_agent
+    human_involvement_notes:
+      en: The author set the question, the pre-registered protocol, and decisions; Opus 5.5 orchestrated agents that did the porting and optimization steps.
+      zh: 作者定问题、预注册方案和各项决策；Opus 5.5 调度多个 agent 完成移植和优化。
+    verified: author_claimed
+    stars: 1
+    stars_checked_at: "2026-11-23"
+    license: Apache-2.0
+    languages: [C#]
+    status: research
+    listed_at: "2026-11-23"
+    notes:
+      en: The README does not name the harness. The commit trailers look like Claude Code's, but that is not stated, so the harness is left as unknown. All measurements are from one Windows machine.
+      zh: README 没写 harness。commit trailer 看着像 Claude Code 的格式，但作者没明说，所以 harness 记为未知。所有测量都来自同一台 Windows 机器。
+
+  - id: megakernel-zoo
+    name: megakernel-zoo
+    summary:
+      en: Model-specific megakernel LLM inference engines, each written by Claude in an autonomous optimization run against a fixed evaluator and audited afterwards, reported faster than vLLM and SGLang on single-sequence decode.
+      zh: 每个模型一套专用的 megakernel LLM 推理引擎。每个引擎都是 Claude 在固定评测器下自主优化写出来的，之后再审计。作者报告单序列解码比 vLLM 和 SGLang 快。
+    description:
+      en: Each engine runs the whole decode step of one checkpoint on one GPU architecture as a single persistent CUDA kernel or device-scheduled kernel loop. The README reports 1.13-1.77x the fastest general engine on nine models from 8B to 594B parameters with the checkpoint's own formats, and up to 2.05x with lossless model-specific weight storage. Engines are timed only after their logits match an FP64 reference, and an independent agent audited each final engine. The repository includes the evaluator, an OpenAI-compatible server, the run records in runs/, and the kit to run the same optimization with claude -p.
+      zh: 每个引擎针对一个 checkpoint 和一种 GPU 架构，把整个解码步骤放进一个常驻 CUDA kernel 或设备端调度的 kernel 循环。README 说，用 checkpoint 自带的数值格式，在 8B 到 594B 的九个模型上是最快通用引擎的 1.13 到 1.77 倍；用针对模型的无损权重存储，最高 2.05 倍。引擎要先在 logits 上和 FP64 参考对齐才计时，每个最终引擎还由一个独立 agent 审计。仓库里有评测器、兼容 OpenAI 的服务器、runs/ 下的运行记录，以及用 claude -p 跑同样优化的工具。
+    repo_url: "https://github.com/dangxingyu/megakernel-zoo"
+    homepage_url: "https://dangxingyu.github.io/megakernel/"
+    article_urls:
+      - "https://dangxingyu.github.io/megakernel/"
+    harnesses: [claude-code]
+    models: [claude-opus-5.5, claude-fable-5.2]
+    categories: [gpu-kernel]
+    difficulty: very-high
+    evidence:
+      - type: author_readme
+        url: "https://github.com/dangxingyu/megakernel-zoo"
+        quote: "Every engine in this repository was written by a coding agent (Claude) in an autonomous optimization run against a fixed evaluator, and audited afterwards."
+        accessed: "2026-11-23"
+      - type: author_blog
+        url: "https://dangxingyu.github.io/megakernel/"
+        quote: "We ran it with Claude Opus 5.5 and Fable 5.2."
+        accessed: "2026-11-23"
+    human_involvement: steered_agent
+    human_involvement_notes:
+      en: Humans built the evaluator that the agent cannot change and the run framework; the agent designed and optimized the engines autonomously, and an independent agent audited the results.
+      zh: 人搭了 agent 改不了的评测器和运行框架；engine 由 agent 自主设计和优化，结果再由独立 agent 审计。
+    verified: author_claimed
+    stars: 41
+    stars_checked_at: "2026-11-23"
+    license: Apache-2.0
+    languages: [CUDA, Python]
+    status: active
+    listed_at: "2026-11-23"
+    first_public_at: "2026-11-18"
+    notes:
+      en: Claude Code is recorded because the README's run instructions launch the agent with claude -p. Speedups are the author's measurements on the author's hardware (H100 and B200).
+      zh: 记成 Claude Code，是因为 README 里启动 agent 的命令是 claude -p。加速比是作者在自己的硬件（H100、B200）上测的。
+
+  - id: windows-switch
+    name: Windows Switch
+    summary:
+      en: Native Windows 10 and Windows 11 on the Nintendo Switch through a custom EL2 shim, a patched UEFI, and new drivers, almost all written by Claude in Claude Code.
+      zh: 在任天堂 Switch 上原生跑 Windows 10 和 Windows 11：自写的 EL2 shim、打过补丁的 UEFI 和新驱动，几乎都由 Claude 在 Claude Code 里写成。
+    description:
+      en: Hekate starts the project's own EL2 shim, which starts a patched NintendoSwitchPkg UEFI that boots a regular Windows Boot Manager from the SD card, with no emulation and no Linux underneath. The README reports Windows 10 ARM32 and ARM64 and Windows 11 ARM64 booting to the desktop on a Mariko (OLED) unit, four cores via PSCI trapping in the shim, touch and battery drivers, and Wi-Fi on Windows 11; there is no USB yet.
+      zh: Hekate 先启动项目自写的 EL2 shim，shim 再启动打过补丁的 NintendoSwitchPkg UEFI，由它从 SD 卡引导正常的 Windows Boot Manager，中间没有模拟器，也没有 Linux。README 说在一台 Mariko（OLED）机器上，Windows 10 ARM32、ARM64 和 Windows 11 ARM64 都能进桌面；shim 拦截 PSCI 让四个核都能用；有触屏和电池驱动，Windows 11 上 Wi-Fi 可用；USB 还不行。
+    repo_url: "https://github.com/DanilKhmyrov/windows-switch"
+    homepage_url: null
+    article_urls:
+      - "https://www.youtube.com/watch?v=yo2r46_bz38"
+    harnesses: [claude-code]
+    models: [unknown]
+    categories: [other]
+    difficulty: very-high
+    evidence:
+      - type: author_readme
+        url: "https://github.com/DanilKhmyrov/windows-switch"
+        quote: "Almost everything in this repository was written by Claude, Anthropic's AI assistant, working in Claude Code. That covers the EL2 shim, the UEFI patches, the drivers, the image and card tooling, the debugging (from the bit-row error displays to the stage-2 SD access log) and this documentation."
+        accessed: "2026-11-23"
+    human_involvement: steered_agent
+    human_involvement_notes:
+      en: The owner set the goals and ran every build on real hardware, reporting back to Claude with photos of the screen.
+      zh: 项目主人定目标，在真机上跑每一个构建，再拍屏幕照片反馈给 Claude。
+    verified: author_claimed
+    stars: 9
+    stars_checked_at: "2026-11-23"
+    license: GPL-2.0
+    languages: [C, Assembly, Python, Shell, PowerShell]
+    status: research
+    listed_at: "2026-11-23"
+    notes:
+      en: Tested on one Mariko (OLED) console. Windows images are not included. The model is not named in the README. Categorized as other because it is boot firmware, a hypervisor-level shim, and drivers rather than a new kernel.
+      zh: 只在一台 Mariko（OLED）主机上测过，不附带 Windows 镜像。README 没写模型名。归到 other，因为它是引导固件、EL2 级的 shim 和驱动，不是新内核。
+
+  - id: bevel-os
+    name: Bevel OS
+    summary:
+      en: A small Windows-95-style desktop OS for one ESP32-S3 driving a VGA monitor, with windows, a file manager, Wi-Fi browsing, and loadable ELF apps including Doom, written by Claude Fable 5.2 in Claude Code.
+      zh: 跑在一块 ESP32-S3 上、接 VGA 显示器的 Windows 95 风格小桌面系统，有窗口、文件管理器、Wi-Fi 浏览器，能加载包括 Doom 在内的 ELF 应用，由 Claude Fable 5.2 在 Claude Code 里写成。
+    description:
+      en: About 11,000 lines of C and a little assembly cover VGA scan-out through bounce buffers, a beam-racing compositor, the window manager and toolkit, USB HID input, and an app loader with a 24-function API. ESP-IDF 5.5.3 and FreeRTOS supply the boot chain, USB host stack, FAT, Wi-Fi/TLS, and the scheduler. INTERVENTIONS.md logs every human action, mostly wiring and other physical work.
+      zh: 大约 11,000 行 C 加少量汇编，做了靠 bounce buffer 的 VGA 扫描输出、追着扫描线的合成器、窗口管理器和控件库、USB HID 输入，还有 24 个函数 API 的应用加载器。引导、USB 主机栈、FAT、Wi-Fi/TLS 和调度器来自 ESP-IDF 5.5.3 和 FreeRTOS。INTERVENTIONS.md 记下了人做的每一件事，主要是接线之类的体力活。
+    repo_url: "https://github.com/andrisgauracs/bevel-os"
+    homepage_url: null
+    article_urls: []
+    harnesses: [claude-code]
+    models: [claude-fable-5.2]
+    categories: [os]
+    difficulty: medium
+    evidence:
+      - type: author_readme
+        url: "https://github.com/andrisgauracs/bevel-os"
+        quote: "The OS was written by an AI model, Claude Fable 5.2, working as a coding agent in Claude Code."
+        accessed: "2026-11-23"
+      - type: author_readme
+        url: "https://github.com/andrisgauracs/bevel-os"
+        quote: "Bevel OS runs on ESP-IDF 5.5.3 and FreeRTOS, which provide the boot chain, USB host stack, FAT, Wi-Fi/TLS and the scheduler. Everything visible is written from scratch (about 11 000 lines of C and a little assembly)."
+        accessed: "2026-11-23"
+    human_involvement: steered_agent
+    human_involvement_notes:
+      en: A human did the wiring, cabling, and 3D printing and made a few decisions, all logged in INTERVENTIONS.md; the brief the agent got is in docs/OS-BUILD-PROMPT.md.
+      zh: 人负责接线、插线和 3D 打印，也做了几个决定，都记在 INTERVENTIONS.md；agent 拿到的任务说明在 docs/OS-BUILD-PROMPT.md。
+    verified: author_claimed
+    stars: 130
+    stars_checked_at: "2026-11-23"
+    license: MIT
+    languages: [C, Assembly, Python]
+    status: active
+    listed_at: "2026-11-23"
+    notes:
+      en: The kernel-level pieces (scheduler, boot chain) come from FreeRTOS and ESP-IDF, so this is listed as medium difficulty. The LICENSE file is MIT text; GitHub shows the license as unrecognized.
+      zh: 调度器、引导这些内核层的东西来自 FreeRTOS 和 ESP-IDF，所以难度记为 medium。LICENSE 文件是 MIT 文本，GitHub 显示为未识别。
+
+  - id: sumi-os
+    name: Sumi OS
+    summary:
+      en: A prototype x86 desktop OS with its own kernel, drivers, file system, window system, and installer, written by Claude Fable 5.2 in Claude Code from an empty folder and one prompt, published unedited.
+      zh: x86 桌面操作系统原型，内核、驱动、文件系统、窗口系统、安装程序都有。Claude Fable 5.2 在 Claude Code 里从空文件夹和一条提示写出来，源码原样公开、没有人改过。
+    description:
+      en: Made for a Japanese YouTube demo, the run used one Claude Code session (effort high) split into 31, 20, and 45 minutes by usage limits, launching 12 sub-agents in total. The result is about 9,400 lines of C and NASM with a kernel, interrupts, a scheduler, disk and network drivers, a file system, a window system, nine apps, and an installer that boots in QEMU. The repository includes the prompt, the resume notes, pre-registered checks with QEMU scripts, and RESULTS.md.
+      zh: 这是为一个日本 YouTube 演示做的。一次 Claude Code 会话（effort high），因为用量上限被切成 31、20、45 分钟三段，总共启动了 12 个子 agent。结果是大约 9,400 行 C 和 NASM：内核、中断、调度器、磁盘和网络驱动、文件系统、窗口系统、九个应用和安装程序，能在 QEMU 里启动。仓库里有提示、续跑说明、事先定好的检查项和 QEMU 脚本，还有 RESULTS.md。
+    repo_url: "https://github.com/hama-jp/sumi-os-claude-fable-5-2"
+    homepage_url: null
+    article_urls: []
+    harnesses: [claude-code]
+    models: [claude-fable-5.2]
+    categories: [os, kernel]
+    difficulty: medium
+    evidence:
+      - type: author_readme
+        url: "https://github.com/hama-jp/sumi-os-claude-fable-5-2"
+        quote: "Sumi OS is a prototype desktop operating system written by Claude Fable 5.2 (Claude Code, effort high) from an empty folder and a single prompt (prompts/os.txt), in 96 minutes of work split over three sessions by account usage limits."
+        accessed: "2026-11-23"
+      - type: author_readme
+        url: "https://github.com/hama-jp/sumi-os-claude-fable-5-2"
+        quote: "The code is published exactly as the run left it; no code was changed by hand."
+        accessed: "2026-11-23"
+    human_involvement: autonomous_multi_agent
+    human_involvement_notes:
+      en: The human gave one prompt plus resume notes after usage-limit stops, and checked the nine done criteria in QEMU afterwards. The model itself started 12 sub-agents.
+      zh: 人只给了一条提示，用量上限停下后再给续跑说明，事后在 QEMU 里核对九项完成标准。12 个子 agent 是模型自己启动的。
+    verified: author_claimed
+    stars: 3
+    stars_checked_at: "2026-11-23"
+    license: null
+    languages: [C, Assembly, Python]
+    status: research
+    listed_at: "2026-11-23"
+    notes:
+      en: This is not a reproduction of Anthropic's official 1,000-subagent OS demo (see fable-os); it is a single, much smaller run. The README notes the model never reported completion. No license file was found.
+      zh: 这不是 Anthropic 官方那次 1,000 多个子 agent 的 OS 演示的复现（那条见 fable-os），而是一次小得多的单独运行。README 说模型最后没有报告完成。仓库没有找到许可证文件。
+
+  - id: benteveo
+    name: Project Benteveo (HP LaserJet 1005 driver)
+    summary:
+      en: A new Windows 10/11 x64 printer driver for the original HP LaserJet 1005, coded with OpenAI Codex from web specs and the ZjStream protocol implementation for CUPS.
+      zh: 给老款 HP LaserJet 1005 新写的 Windows 10/11 x64 打印机驱动，作者用 OpenAI Codex，参考网上的规格和 CUPS 的 ZjStream 协议实现写成。
+    description:
+      en: HP's support for the printer ended in the Windows XP era. The driver installs through the Add Printer Wizard (Have Disk), loads the printer's firmware from the original HP image, and the author says it prints text, bitmaps, and multi-page documents. The repository includes a changelog, test evidence, and a release plan.
+      zh: HP 对这台打印机的支持停在 Windows XP 时代。这个驱动通过 “添加打印机” 向导（从磁盘安装）装上，打印机固件取自 HP 原始镜像。作者说文字、位图和多页文档都能打印。仓库里有更新日志、测试记录和发布计划。
+    repo_url: "https://github.com/hernandp/OpenHPZJS1005-x64-drv"
+    homepage_url: null
+    article_urls:
+      - "https://news.ycombinator.com/item?id=50541736"
+    harnesses: [codex]
+    models: [unknown]
+    categories: [other]
+    difficulty: medium
+    evidence:
+      - type: author_readme
+        url: "https://github.com/hernandp/OpenHPZJS1005-x64-drv"
+        quote: "But it was lacking a printer driver for Windows 11, so I decided to code one using Codex, relying on specs from the web and the Zenographics ZjStream open protocol implementation for CUPS."
+        accessed: "2026-11-23"
+    human_involvement: steered_agent
+    human_involvement_notes:
+      en: The author directed the work and tested on the physical printer. How much code was hand-edited is not stated.
+      zh: 作者主导，并在真打印机上测试。有多少代码经过人手修改，没有写。
+    verified: author_claimed
+    stars: 1
+    stars_checked_at: "2026-11-23"
+    license: GPL-2.0
+    languages: [C++, PowerShell, Python]
+    status: active
+    listed_at: "2026-11-23"
+    notes:
+      en: Categorized as other because the schema has no driver category. Supported setup is Windows 10 22H2 x64 or Windows 11 x64 with one USB printer and A4 paper. The model is not named.
+      zh: schema 里没有 driver 分类，所以归到 other。支持的环境是 Windows 10 22H2 x64 或 Windows 11 x64、一台 USB 打印机、A4 纸。没写模型名。
